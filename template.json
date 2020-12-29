@@ -1,0 +1,64 @@
+{
+  "Actor": {
+    "types": ["hero_player", "strife_player", "opponent"],
+    "templates": {
+      "base": {
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "power": {
+          "value": 5,
+          "min": 0,
+          "max": 5
+        }
+      }
+    },
+    "hero_player": {
+      "templates": ["base"],
+      "epithet": "",
+      "epithet_die": {
+        "value": 6
+      },
+      "name_die": {
+        "value": 6
+      },
+      "lineage": "",
+      "domains": {
+        "arts-oration": {
+          "value": 6
+        },
+        "blood-valor": {
+          "value": 6
+        },
+        "craft-reason": {
+          "value": 6
+        },
+        "resolve-spirit": {
+          "value": 6
+        }
+      },
+      "bonds": [],
+      "honored_god": "",
+      "honored_god_divine_favors": ["available","available"],
+      "divine_favors": {
+        "zeus": ["open","open"]
+      },
+      "style": ""
+    }
+  },
+  "Item": {
+    "types": ["item"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0
+    }
+  }
+}
