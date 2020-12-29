@@ -17,15 +17,15 @@ export class agonActorSheet extends ActorSheet {
 
   /* -------------------------------------------- */
 
-  /** @override */
-  getData() {
-    const data = super.getData();
-    data.dtypes = ["String", "Number", "Boolean"];
-    for (let attr of Object.values(data.data.attributes)) {
-      attr.isCheckbox = attr.dtype === "Boolean";
-    }
-    return data;
-  }
+  // /** @override */
+  // getData() {
+  //   const data = super.getData();
+  //   data.dtypes = ["String", "Number", "Boolean"];
+  //   for (let attr of Object.values(data.data.attributes)) {
+  //     attr.isCheckbox = attr.dtype === "Boolean";
+  //   }
+  //   return data;
+  // }
 
   /** @override */
   activateListeners(html) {
@@ -34,22 +34,22 @@ export class agonActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
-    // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate.bind(this));
+    // // Add Inventory Item
+    // html.find('.item-create').click(this._onItemCreate.bind(this));
 
-    // Update Inventory Item
-    html.find('.item-edit').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.getOwnedItem(li.data("itemId"));
-      item.sheet.render(true);
-    });
+    // // Update Inventory Item
+    // html.find('.item-edit').click(ev => {
+    //   const li = $(ev.currentTarget).parents(".item");
+    //   const item = this.actor.getOwnedItem(li.data("itemId"));
+    //   item.sheet.render(true);
+    // });
 
-    // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
-      const li = $(ev.currentTarget).parents(".item");
-      this.actor.deleteOwnedItem(li.data("itemId"));
-      li.slideUp(200, () => this.render(false));
-    });
+    // // Delete Inventory Item
+    // html.find('.item-delete').click(ev => {
+    //   const li = $(ev.currentTarget).parents(".item");
+    //   this.actor.deleteOwnedItem(li.data("itemId"));
+    //   li.slideUp(200, () => this.render(false));
+    // });
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
@@ -59,8 +59,8 @@ export class agonActorSheet extends ActorSheet {
 
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
    * @private
+   * @param {Event} event   The originating click event
    */
   _onItemCreate(event) {
     event.preventDefault();
@@ -97,10 +97,19 @@ export class agonActorSheet extends ActorSheet {
     if (dataset.roll) {
       let roll = new Roll(dataset.roll, this.actor.data.data);
       let label = dataset.label ? `Rolling ${dataset.label}` : '';
-      roll.roll().toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label
-      });
+      // roll.roll().toMessage({
+      //   speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      //   content: '<h1>woah man</h1>',
+      //   flavor: label
+      // });
+      roll.evaluate();
+      roll.result;
+      renderTemplate("systems/agon/templates/chat/strife-roll.html", {}).then(html => {
+        ChatMessage.create({content: html});
+      })
+      // ChatMessage.create({
+      //   content: '<h1>The Strife Player Rolls</h1>'
+      // });
     }
   }
 

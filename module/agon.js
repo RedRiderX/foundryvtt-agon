@@ -45,3 +45,5 @@ Hooks.once('init', async function() {
     return str.toLowerCase();
   });
 });
+
+Hooks.on("renderChatLog", (app, html, data) => agonActor.chatListeners(html));
