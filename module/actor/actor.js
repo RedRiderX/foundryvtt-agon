@@ -3,7 +3,6 @@
  * @extends {Actor}
  */
 export class agonActor extends Actor {
-
   // /**
   //  * Augment the basic actor data with additional dynamic data.
   //  */
@@ -39,7 +38,7 @@ export class agonActor extends Actor {
   /* -------------------------------------------- */
 
   static chatListeners(html) {
-    html.on('click', '.card-actions button', this._onChatCardAction.bind(this));
+    html.on("click", ".card-actions button", this._onChatCardAction.bind(this));
   }
 
   /**
@@ -56,7 +55,7 @@ export class agonActor extends Actor {
     button.disabled = true;
     const card = button.closest(".chat-card");
     const messageId = card.closest(".message").dataset.messageId;
-    const message =  game.messages.get(messageId);
+    const message = game.messages.get(messageId);
     const action = button.dataset.action;
 
     // // Validate permission to proceed with the roll
@@ -76,9 +75,25 @@ export class agonActor extends Actor {
     // const spellLevel = parseInt(card.dataset.spellLevel) || null;
 
     // Handle different actions
-    switch ( action ) {
+    switch (action) {
       case "contest-reply":
-        ChatMessage.create({content:'yo'});
+        let d = new Dialog({
+          title: "Which of your aspects do you call on?",
+          content: await renderTemplate(
+            "systems/agon/templates/dialog/contest-reply.html",
+            { target: 10 }
+          ),
+          buttons: {
+            roll: {
+              // icon: '<i class="fas fa-check"></i>',
+              label: "Speak",
+              callback: () => ChatMessage.create({ content: "yo" }),
+            },
+          },
+          // render: html => console.log("Register interactivity in the rendered dialog"),
+          // close: html => console.log("This always is logged no matter which option is chosen")
+        });
+        d.render(true);
         break;
       //   await item.rollAttack({event}); break;
       // case "damage":
@@ -110,5 +125,4 @@ export class agonActor extends Actor {
     // Re-enable the button
     button.disabled = false;
   }
-
 }
