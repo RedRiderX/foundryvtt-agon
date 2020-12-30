@@ -1,0 +1,150 @@
+<form class="{{cssClass}} container" autocomplete="off">
+    {{!-- Sheet Header --}}
+    <header class="sheet-header flex-row">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <div class="flex flex-col">
+          <div>
+            glory meter
+          </div>
+          <div>
+            <img src="systems/agon/assets/logo.png" alt="AGON">
+          </div>
+        </div>
+    </header>
+    <div class="epithet flex-row">
+        <label for="data.epithet" class="">Epithet</label>
+        <input type="text" name="data.epithet" value="{{data.epithet}}" placeholder="Clever-Eyed" class="w-auto"/>
+        <select name="data.epithet_die">
+            {{selectOptions data.allowed_die_sizes selected=data.epithet_die localize=false}}
+        </select>
+    </div>
+    <div class="name flex-row">
+        <label for="name" class="">Name</label>
+        <input type="text" name="name" value="{{actor.name}}" placeholder="Atrophos" class="w-auto"/>
+        <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them" class="w-auto"/>
+        <select name="data.name_die">
+            {{selectOptions data.allowed_die_sizes selected=data.name_die localize=false}}
+        </select>
+    </div>
+    <div class="lineage flex-row">
+        <label for="data.lineage" class="">Lineage</label>
+        <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-auto"/>
+    </div>
+    <div class="honored-god flex-row">
+        <label for="data.honored_god.name" class="">Honored God</label>
+        <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus" class="w-auto"/>
+        <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-auto"/>
+        <div class="divine-favours">
+            <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
+            <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
+        </div>
+    </div>
+    <div class="domains ">
+        <h1>Domains</h1>
+        <div class="flex-row">
+            {{#each data.domains as |die domain|}}
+                <div class="domain flex-row flex-1">
+                    icon
+                    <label
+                        for="data.domains.{{domain}}"
+                        class="resource-label rollable"
+                        data-roll="d@domains.{{domain}}"
+                        data-label="{{domain}}">{{domain}}</label>
+                    <select name="data.domains.{{domain}}">
+                        {{selectOptions ../data.allowed_die_sizes selected=die localize=false}}
+                    </select>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <section class="favors">
+        <h1>Divine Favor</h1>
+        <div class="grid grid-cols-3 gap-4">
+            {{#each data.divines as |divine divineHandle|}}
+                <div class="divine">
+                    <div class="divine__strength">{{divine.strength}}</div>
+                    <div class="divine__name">{{divine.name}}</div>
+                    <div class="divine__favours">
+                        <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
+                        <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="style">
+        <h1>Style & Notes</h1>
+        <div class="text">
+            {{editor content=data.style target="data.style" button=false owner=owner editable=editable}}
+        </div>
+    </section>
+    <section class="recite">
+        <h1>Recite Your Deeds</h1>
+        <p>Shouldn't this be part of the roll dialog?</p>
+    </section>
+    <section class="pathos">
+        <h1>Pathos</h1>
+    </section>
+    <section class="boons">
+        <h1>Boons</h1>
+    </section>
+    <section class="bonds">
+        <h1>Bonds</h1>
+        <div class="flex-column">
+            {{#each data.bonds as |bond bondKey|}}
+                <div class="bond flex-row">
+                    <input
+                        name="data.bonds.{{bondKey}}.name"
+                        type="text"
+                        value="{{bond.name}}"
+                        class="bond__name flex-grow"/>
+                    <input
+                        name="data.bonds.{{bondKey}}.strength"
+                        type="text"
+                        value="{{bond.strength}}"
+                        class="bond__strength"
+                        placeholder="0"
+                        data-dtype="Number"/>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+    <section class="trophies">
+        <h1>Great Deeds & Trophies</h1>
+        <div class="flex-column">
+            {{#each data.trophies as |trophy trophyKey|}}
+                <div class="bond flex-row">
+                    <input 
+                        type="checkbox"
+                        name="data.trophies.{{trophyKey}}.spent"
+                        {{checked trophy.spent}} />
+                    <input
+                        name="data.trophies.{{trophyKey}}.name"
+                        type="text"
+                        value="{{trophy.name}}"
+                        class="trophy__name flex-grow"/>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+    
+    <section class="virtues">
+        <h1>Virtues</h1>
+        <div class="flex-row">
+            {{#each data.virtues as |virtueAmount virtue|}}
+                <div class="virtue flex-row flex-1">
+                    <label
+                        for="data.virtues.{{virtue}}">{{virtue}}</label>
+                    <input
+                        name="data.virtues.{{virtue}}"
+                        type="number"
+                        value="{{virtueAmount}}"/>
+                </div>
+            {{/each}}
+        </div>
+
+    </section>
+</form>
+

@@ -80,14 +80,14 @@ export class agonActor extends Actor {
         let d = new Dialog({
           title: "Which of your aspects do you call on?",
           content: await renderTemplate(
-            "systems/agon/templates/dialog/contest-reply.html",
+            "systems/agon/templates/dialog/contest-reply.handlebars",
             { target: 10 }
           ),
           buttons: {
             roll: {
-              // icon: '<i class="fas fa-check"></i>',
-              label: "Speak",
-              callback: () => ChatMessage.create({ content: "yo" }),
+              icon: '<i class="fas fa-dice-d20"></i>',
+              label: "Speak Your Name",
+              callback: html => ChatMessage.create({ content: html[0].querySelector("form .spoken_title").outerHTML }),
             },
           },
           // render: html => console.log("Register interactivity in the rendered dialog"),
@@ -125,4 +125,5 @@ export class agonActor extends Actor {
     // Re-enable the button
     button.disabled = false;
   }
+  _
 }

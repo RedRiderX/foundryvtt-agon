@@ -8,7 +8,7 @@
   "templateVersion": 2,
   "author": "RedMcGreg",
   "esmodules": ["module/agon.js"],
-  "styles": ["css/agon.css"],
+  "styles": ["dist/agon.css"],
   "scripts": [],
   "packs": [],
   "languages": [

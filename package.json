@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "CSS compiler for the Agon system",
   "scripts": {
-    "build": "gulp",
-    "compile": "gulp css",
-    "watch": "gulp",
-    "gulp": "gulp"
+    "build": "postcss css/agon.css -o dist/agon.css",
+    "start": "npm run watch",
+    "watch": "postcss css/agon.css -o dist/agon.css -w"
   },
   "browserslist": [
     "last 3 versions"
@@ -14,10 +13,13 @@
   "author": "RedMcGreg",
   "license": "MIT",
   "private": true,
+  "devDependencies": {
+    "postcss": "^8.2.1",
+    "postcss-cli": "^8.3.1"
+  },
   "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^2.6.5"
+    "postcss-import": "^14.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^2.0.2"
   }
 }

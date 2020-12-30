@@ -1,51 +1,103 @@
 {
   "Actor": {
-    "types": ["hero_player", "strife_player", "opponent"],
+    "types": ["hero_player", "strife_player"],
     "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        }
-      }
     },
     "hero_player": {
-      "templates": ["base"],
+      "allowed_die_sizes": {
+        "6": "d6",
+        "8": "d8",
+        "10": "d10",
+        "12": "d12"
+      },
       "epithet": "",
-      "epithet_die": {
-        "value": 6
-      },
-      "name_die": {
-        "value": 6
-      },
+      "second_epithet": "",
+      "epithet_die": 6,
+      "name_die": 6,
       "lineage": "",
+      "pronouns": "They/Them",
       "domains": {
-        "arts-oration": {
-          "value": 6
+        "arts-oration": 6,
+        "blood-valor": 6,
+        "craft-reason": 6,
+        "resolve-spirit": 6
+      },
+      "bonds": [
+        {
+          "name": "Zeus",
+          "strength": 1
         },
-        "blood-valor": {
-          "value": 6
+        {
+          "name": "",
+          "strength": 0
         },
-        "craft-reason": {
-          "value": 6
+        {
+          "name": "",
+          "strength": 0
+        }
+      ],
+      "honored_god": {
+        "name": "",
+        "strength": "",
+        "favors": ["available","available"]
+      },
+      "divines": {
+        "zeus": {
+          "name": "Zeus",
+          "strength": "Authority",
+          "favors": ["open","open"]
         },
-        "resolve-spirit": {
-          "value": 6
+        "aphrodite": {
+          "name": "Aphrodite",
+          "strength": "Beauty",
+          "favors": ["open","open"]
+        },
+        "demeter": {
+          "name": "Demeter",
+          "strength": "Conviction",
+          "favors": ["open","open"]
+        },
+        "hera": {
+          "name": "Hera",
+          "strength": "Cunning",
+          "favors": ["open","open"]
         }
       },
-      "bonds": [],
-      "honored_god": "",
-      "honored_god_divine_favors": ["available","available"],
-      "divine_favors": {
-        "zeus": ["open","open"]
+      "style": "<p>Record your hero's style: their look, armor, and favored weapon</p>",
+      "pathos": {
+        "value": 0,
+        "min": 0,
+        "max": 6
       },
-      "style": ""
+      "fate": {
+        "value": 0,
+        "min": 0,
+        "max": 12
+      },
+      "glory": 0,
+      "trophies": [
+        {
+          "name": "A cool monster head",
+          "spent": true
+        },
+        {
+          "name": "",
+          "spent": false
+        },
+        {
+          "name": "",
+          "spent": false
+        }
+      ],
+      "boons": {
+        "d10-advance": false
+      },
+      "virtues": {
+        "acumen": 0,
+        "courage": 0,
+        "grace": 0,
+        "passion": 0
+      }
     }
   },
   "Item": {

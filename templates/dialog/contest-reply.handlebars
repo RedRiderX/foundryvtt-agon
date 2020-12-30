@@ -1,0 +1,152 @@
+<form>
+  <div class="form-group">
+    <label>Target</label>
+    <input type="number" name="target" value="{{target}}" />
+  </div>
+  <div class="form-group_epithet form-group checkbox">
+    <h1>Your Epithet:</h1>
+    <div class="checkbox-group">
+      <div>
+        <input type="checkbox" id="epithet_1" name="epithet_1" />
+        <label for="epithet_1">Great-Hunter</label>
+      </div>
+      <div>
+        <input type="checkbox" id="epithet_2" name="epithet_2" />
+        <label for="epithet_2">Silver-Tongued</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group_domain form-group checkbox">
+    <h1>Domain:</h1>
+    <div>
+      <input type="checkbox" id="pathos" name="pathos" />
+      <label for="pathos">Mark Pathos for a second Domain</label>
+    </div>
+    <div class="checkbox-group">
+      <div>
+        <input type="checkbox" id="domain_2" name="domain_2" />
+        <label for="epithet_2">Arts & Oration</label>
+      </div>
+      <div>
+        <input type="checkbox" id="domain_1" name="domain_1" />
+        <label for="epithet_1">Craft & Reason</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group_favor form-group">
+    <h1>Divine Favor</h1>
+    <div>
+      <input type="checkbox" id="divine_favor" name="divine_favor" />
+      <label for="divine_favor">Invoke Divine Favor by calling on the strength of a god</label>
+    </div>
+    <div class="checkbox-group">
+      <div>
+        <input type="checkbox" id="domain_2" name="domain_2" />
+        <label for="epithet_2">Zeus</label>
+      </div>
+      <div>
+        <input type="checkbox" id="domain_1" name="domain_1" />
+        <label for="epithet_1">Aphrodite</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group_bonds form-group">
+    <h1>Bonds</h1>
+    <div>
+      <input type="checkbox" id="divine_favor" name="divine_favor" />
+      <label for="divine_favor">Use a Bond and call for aid.</label>
+    </div>
+    <div class="checkbox-group">
+      <div>
+        <input type="checkbox" id="domain_2" name="domain_2" />
+        <label for="epithet_2">Zeus</label>
+      </div>
+      <div>
+        <input type="checkbox" id="domain_1" name="domain_1" />
+        <label for="epithet_1">Draos</label>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group_support form-group">
+    <h1>Support</h1>
+    <div>
+      <input type="checkbox" id="divine_favor" name="divine_favor" />
+      <label for="divine_favor">Does another Hero Player support you?</label>
+    </div>
+    <div class="checkbox-group">
+      <div>
+        <input type="checkbox" id="domain_2" name="domain_2" />
+        <label for="epithet_2">Helene</label>
+      </div>
+      <div>
+        <input type="checkbox" id="domain_1" name="domain_1" />
+        <label for="epithet_1">Draos</label>
+      </div>
+    </div>
+  </div>
+  
+
+  {{!--
+  <div class="form-group">
+    <label>{{ localize "DND5E.RollSituationalBonus" }}</label>
+    <input
+      type="text"
+      name="bonus"
+      value=""
+      placeholder="{{ localize 'DND5E.RollExample' }}"
+    />
+  </div>
+  <div class="form-group">
+    <label>{{ localize "DND5E.RollMode" }}</label>
+    <select name="rollMode">
+      {{#select rollMode}} {{#each rollModes as |label mode|}}
+      <option value="{{mode}}">{{localize label}}</option>
+      {{/each}} {{/select}}
+    </select>
+  </div>
+  --}}
+  <div class="spoken_title">
+    <div class="preamble">
+      I will face this contest! I am
+    </div>
+      <div class="epithet">
+          <div class="epithet__text">
+              Great-Hunter
+          </div>
+          <div class="epithet__die">d6</div>
+      </div>
+      
+      <div class="name">
+          <div class="name__text">
+              Arkadios, Scion of Demeter
+          </div>
+          <div class="name__die">d6</div>
+      </div> 
+
+      <div class="domain">
+          <div class="domain__text">
+              , Hero of Craft & Reason
+          </div>
+          <div class="domain__die">d8</div>
+      </div> 
+      
+      <div class="bond">
+          <div class="bond__text">
+              , Ally of Draos
+          </div>
+          <div class="bond__die">d6</div>
+      </div> 
+      <div class="punctuation">
+        !
+      </div>
+      <div class="favor">
+          <div class="favor__text">
+              I call on the Precision of Artemis to aid me.
+          </div>
+          <div class="favor__die">d4</div>
+      </div> 
+    </div>
+</form>

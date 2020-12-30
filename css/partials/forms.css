@@ -1,0 +1,10 @@
+.agon.sheet form.container {
+
+    & input[type="text"],
+    & input[type="number"],
+    & input[type="password"],
+    & input[type="date"],
+    & input[type="time"] {
+        @apply w-auto;
+    }
+}
