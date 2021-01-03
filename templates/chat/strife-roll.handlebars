@@ -1,18 +1,30 @@
 <div class="agon chat-card">
-    <h1>The Strife Player Rolls:</h1>
-    <p>Arts & Oration</p>
-    <p>Perilous</p>
-    <p>The Target is: 10</p>
-    <h2>Who will face this contest?</h2>
-    <div class="card-actions">
-        <button data-action="contest-reply">Answer the Call</button>
+    <p>You face </p>
+    <strong>
+        {{epithet}} 
+        {{#if epithet2}} and {{ epithet2 }} {{/if}}
+        {{ name }}</strong>
+    <p>in a 
+        <strong>
+            {{#if epic}} Epic {{/if}}
+            {{#if mythic}} Mythic {{/if}}
+            {{#if perilous}} Perilous {{/if}}
+            {{#if sacred}} Sacred {{/if}}
+        </strong>
+        contest of </p>
+    <div class="domain flex flex-row flex-1 items-stretch font-sans font-bold">
+        <img src="systems/agon/assets/{{domain}}.svg" class="w-10" alt="">
+        <label
+            for="data.domains.{{domain}}"
+            class="w-24 text-xl"
+            data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
     </div>
-</div>
-<div class="agon chat-card">
-    <p>You face a <strong>Perilous</strong> contest of <strong>Craft & Reason</strong> against <strong>Stoic and Strong-Armed Meletia, Mining Chief</strong></p>
-    <p>The Target is <strong>10</strong></p>
+    <p>The Target is <strong>{{ target }}</strong></p>
     <h2>Who will face this contest?</h2>
     <div class="card-actions">
-        <button data-action="contest-reply">Answer the Call</button>
+        <button
+            data-action="contest-reply"
+            data-target="{{ target }}"
+            data-domain="{{ domain }}">Answer the Call</button>
     </div>
 </div>

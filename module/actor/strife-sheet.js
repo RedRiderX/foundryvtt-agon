@@ -10,21 +10,17 @@ export class agonStrifeSheet extends ActorSheet {
       template: "systems/agon/templates/actor/strife-sheet.handlebars",
       width: 800,
       height: 800,
-      // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
 
   /* -------------------------------------------- */
 
-  // /** @override */
-  // getData() {
-  //   const data = super.getData();
-  //   data.dtypes = ["String", "Number", "Boolean"];
-  //   for (let attr of Object.values(data.data.attributes)) {
-  //     attr.isCheckbox = attr.dtype === "Boolean";
-  //   }
-  //   return data;
-  // }
+  /** @override */
+  getData() {
+    const data = super.getData();
+    data.config = CONFIG.AGON;
+    return data;
+  }
 
   /** @override */
   activateListeners(html) {
@@ -32,23 +28,6 @@ export class agonStrifeSheet extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
-
-    // // Add Inventory Item
-    // html.find('.item-create').click(this._onItemCreate.bind(this));
-
-    // // Update Inventory Item
-    // html.find('.item-edit').click(ev => {
-    //   const li = $(ev.currentTarget).parents(".item");
-    //   const item = this.actor.getOwnedItem(li.data("itemId"));
-    //   item.sheet.render(true);
-    // });
-
-    // // Delete Inventory Item
-    // html.find('.item-delete').click(ev => {
-    //   const li = $(ev.currentTarget).parents(".item");
-    //   this.actor.deleteOwnedItem(li.data("itemId"));
-    //   li.slideUp(200, () => this.render(false));
-    // });
 
     html
       .on(
@@ -60,33 +39,6 @@ export class agonStrifeSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
-
-  // /**
-  //  * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-  //  * @private
-  //  * @param {Event} event   The originating click event
-  //  */
-  // _onItemCreate(event) {
-  //   event.preventDefault();
-  //   const header = event.currentTarget;
-  //   // Get the type of item to create.
-  //   const type = header.dataset.type;
-  //   // Grab any data associated with this control.
-  //   const data = duplicate(header.dataset);
-  //   // Initialize a default name.
-  //   const name = `New ${type.capitalize()}`;
-  //   // Prepare the item object.
-  //   const itemData = {
-  //     name: name,
-  //     type: type,
-  //     data: data
-  //   };
-  //   // Remove the type from the dataset since it's in the itemData.type prop.
-  //   delete itemData.data["type"];
-
-  //   // Finally, create the item!
-  //   return this.actor.createOwnedItem(itemData);
-  // }
 
   // /**
   //  * Handle clickable rolls.
@@ -132,6 +84,7 @@ export class agonStrifeSheet extends ActorSheet {
 
     renderTemplate("systems/agon/templates/dialog/propose-contest.handlebars", {
       actor: this.actor,
+      config: CONFIG.AGON,
     }).then((html) => {
       d.data.content = html;
       d.render(true);
@@ -139,12 +92,36 @@ export class agonStrifeSheet extends ActorSheet {
   }
 
   _createStrifeRoll(html) {
-    let rollFormula = "1d6";
-    let roll = new Roll(rollFormula);
+    const formData = new FormData(html[0].querySelector('form'));
+    let dicePool = [];
+    let name = formData.get('name').length ? formData.get('name') : null;
+    let epithet = formData.get('epithet').length ? formData.get('epithet') : null;
+    let epithet2 = formData.get('epithet2').length ? formData.get('epithet2') : null;
+
+    if (name) {
+      dicePool.push('1' + CONFIG.AGON.dieTypes[formData.get('nameDie')]);
+    }
+    if (epithet) {
+      dicePool.push('1' + CONFIG.AGON.dieTypes[formData.get('epithetDie')]);
+    }
+    if (epithet2) {
+      dicePool.push('1' + CONFIG.AGON.dieTypes[formData.get('epithet2Die')]);
+    }
+    
+    // let rollFormula = ;
+    let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {strife: formData.get('strifeLevel')});
     roll.evaluate();
 
     renderTemplate("systems/agon/templates/chat/strife-roll.handlebars", {
-      target: roll.result,
+      name,
+      epithet,
+      epithet2,
+      epic: formData.get('epic'),
+      mythic: formData.get('mythic'),
+      perilous: formData.get('perilous'),
+      sacred: formData.get('sacred'),
+      domain: formData.get('domain'),
+      target: roll.total,
     }).then((html) => {
       ChatMessage.create({ content: html });
     });

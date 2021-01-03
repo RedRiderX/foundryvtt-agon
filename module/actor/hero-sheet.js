@@ -9,23 +9,20 @@ export class agonHeroSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["agon", "sheet", "actor", "actor__hero"],
       template: "systems/agon/templates/actor/hero-sheet.handlebars",
-      width: 600,
-      height: 600,
+      width: 800,
+      height: 800,
       // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
   }
 
   /* -------------------------------------------- */
 
-  // /** @override */
-  // getData() {
-  //   const data = super.getData();
-  //   data.dtypes = ["String", "Number", "Boolean"];
-  //   for (let attr of Object.values(data.data.attributes)) {
-  //     attr.isCheckbox = attr.dtype === "Boolean";
-  //   }
-  //   return data;
-  // }
+  /** @override */
+  getData() {
+    const data = super.getData();
+    data.config = CONFIG.AGON;
+    return data;
+  }
 
   // /** @override */
   // activateListeners(html) {

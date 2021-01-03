@@ -1,26 +1,19 @@
 {
   "Actor": {
     "types": ["hero_player", "strife_player"],
-    "templates": {
-    },
+    "templates": {},
     "hero_player": {
-      "allowed_die_sizes": {
-        "6": "d6",
-        "8": "d8",
-        "10": "d10",
-        "12": "d12"
-      },
       "epithet": "",
       "second_epithet": "",
-      "epithet_die": 6,
-      "name_die": 6,
+      "epithet_die": "d6",
+      "name_die": "d6",
       "lineage": "",
       "pronouns": "They/Them",
       "domains": {
-        "arts-oration": 6,
-        "blood-valor": 6,
-        "craft-reason": 6,
-        "resolve-spirit": 6
+        "arts-oration": "d6",
+        "blood-valor": "d6",
+        "craft-reason": "d6",
+        "resolve-spirit": "d6"
       },
       "bonds": [
         {
@@ -39,28 +32,28 @@
       "honored_god": {
         "name": "",
         "strength": "",
-        "favors": ["available","available"]
+        "favors": ["available", "available"]
       },
       "divines": {
         "zeus": {
           "name": "Zeus",
           "strength": "Authority",
-          "favors": ["open","open"]
+          "favors": ["open", "open"]
         },
         "aphrodite": {
           "name": "Aphrodite",
           "strength": "Beauty",
-          "favors": ["open","open"]
+          "favors": ["open", "open"]
         },
         "demeter": {
           "name": "Demeter",
           "strength": "Conviction",
-          "favors": ["open","open"]
+          "favors": ["open", "open"]
         },
         "hera": {
           "name": "Hera",
           "strength": "Cunning",
-          "favors": ["open","open"]
+          "favors": ["open", "open"]
         }
       },
       "style": "<p>Record your hero's style: their look, armor, and favored weapon</p>",
@@ -98,6 +91,20 @@
         "grace": 0,
         "passion": 0
       }
+    },
+    "strife_player": {
+      "vault": {
+        "stars": {},
+        "wrath": {}
+      },
+      "strifeLevel": 0,
+      "advantages": "",
+      "destinies": [
+        {
+          "name": "Akoros",
+          "details": ""
+        }
+      ]
     }
   },
   "Item": {

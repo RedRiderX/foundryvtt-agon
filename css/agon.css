@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;500;700&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
 @import "partials/forms.css";
+
+.agon {
+    @apply font-sans;
+
+    &.sheet .editor {
+        @apply h-40;
+    }
+}

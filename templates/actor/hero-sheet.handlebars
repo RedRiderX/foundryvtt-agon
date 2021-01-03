@@ -1,6 +1,6 @@
-<form class="{{cssClass}} container" autocomplete="off">
+<form class="{{cssClass}} container uppercase" autocomplete="off">
     {{!-- Sheet Header --}}
-    <header class="sheet-header flex-row">
+    <header class="sheet-header flex flex-row">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
         <div class="flex flex-col">
           <div>
@@ -11,26 +11,26 @@
           </div>
         </div>
     </header>
-    <div class="epithet flex-row">
-        <label for="data.epithet" class="">Epithet</label>
+    <div class="epithet flex flex-row">
+        <label for="data.epithet" class="font-light">Epithet</label>
         <input type="text" name="data.epithet" value="{{data.epithet}}" placeholder="Clever-Eyed" class="w-auto"/>
         <select name="data.epithet_die">
-            {{selectOptions data.allowed_die_sizes selected=data.epithet_die localize=false}}
+            {{selectOptions config.dieTypes selected=data.epithet_die localize=false}}
         </select>
     </div>
-    <div class="name flex-row">
+    <div class="name flex flex-row">
         <label for="name" class="">Name</label>
         <input type="text" name="name" value="{{actor.name}}" placeholder="Atrophos" class="w-auto"/>
         <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them" class="w-auto"/>
         <select name="data.name_die">
-            {{selectOptions data.allowed_die_sizes selected=data.name_die localize=false}}
+            {{selectOptions config.dieTypes selected=data.name_die localize=false}}
         </select>
     </div>
-    <div class="lineage flex-row">
+    <div class="lineage flex flex-row">
         <label for="data.lineage" class="">Lineage</label>
         <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-auto"/>
     </div>
-    <div class="honored-god flex-row">
+    <div class="honored-god flex flex-row">
         <label for="data.honored_god.name" class="">Honored God</label>
         <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus" class="w-auto"/>
         <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-auto"/>
@@ -41,17 +41,17 @@
     </div>
     <div class="domains ">
         <h1>Domains</h1>
-        <div class="flex-row">
+        <div class="flex flex-row">
             {{#each data.domains as |die domain|}}
-                <div class="domain flex-row flex-1">
-                    icon
+                <div class="domain flex flex-row flex-1 items-stretch font-sans font-bold">
+                    <img src="systems/agon/assets/{{domain}}.svg" class="w-10" alt="">
                     <label
                         for="data.domains.{{domain}}"
-                        class="resource-label rollable"
+                        class="resource-label rollable w-24 text-xl"
                         data-roll="d@domains.{{domain}}"
-                        data-label="{{domain}}">{{domain}}</label>
-                    <select name="data.domains.{{domain}}">
-                        {{selectOptions ../data.allowed_die_sizes selected=die localize=false}}
+                        data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
+                    <select name="data.domains.{{domain}}" class="h-auto">
+                        {{selectOptions ../config.dieTypes selected=die localize=false}}
                     </select>
                 </div>
             {{/each}}
@@ -63,7 +63,7 @@
         <div class="grid grid-cols-3 gap-4">
             {{#each data.divines as |divine divineHandle|}}
                 <div class="divine">
-                    <div class="divine__strength">{{divine.strength}}</div>
+                    <div class="divine__strength font-bold">{{divine.strength}}</div>
                     <div class="divine__name">{{divine.name}}</div>
                     <div class="divine__favours">
                         <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
@@ -76,9 +76,7 @@
 
     <section class="style">
         <h1>Style & Notes</h1>
-        <div class="text">
-            {{editor content=data.style target="data.style" button=false owner=owner editable=editable}}
-        </div>
+        {{editor content=data.style target="data.style" button=false owner=owner editable=editable}}
     </section>
     <section class="recite">
         <h1>Recite Your Deeds</h1>
@@ -94,7 +92,7 @@
         <h1>Bonds</h1>
         <div class="flex-column">
             {{#each data.bonds as |bond bondKey|}}
-                <div class="bond flex-row">
+                <div class="bond flex flex-row">
                     <input
                         name="data.bonds.{{bondKey}}.name"
                         type="text"
@@ -115,7 +113,7 @@
         <h1>Great Deeds & Trophies</h1>
         <div class="flex-column">
             {{#each data.trophies as |trophy trophyKey|}}
-                <div class="bond flex-row">
+                <div class="bond flex flex-row">
                     <input 
                         type="checkbox"
                         name="data.trophies.{{trophyKey}}.spent"
@@ -134,7 +132,7 @@
         <h1>Virtues</h1>
         <div class="flex-row">
             {{#each data.virtues as |virtueAmount virtue|}}
-                <div class="virtue flex-row flex-1">
+                <div class="virtue flex flex-row flex-1">
                     <label
                         for="data.virtues.{{virtue}}">{{virtue}}</label>
                     <input
