@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;500;700&display=swap");
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
@@ -7,9 +7,28 @@
 @import "partials/forms.css";
 
 .agon {
-    @apply font-sans;
+  @apply font-sans;
 
-    &.sheet .editor {
-        @apply h-40;
-    }
+  &.sheet .editor {
+    @apply h-40;
+  }
+}
+
+body {
+  background-image: url("../assets/agon-bg.webp");
+}
+
+#pause > img {
+  content: url("../assets/agon-o-mark.svg");
+  /* height: 256px;
+  width: 256px; */
+  /* top: -75px;
+  left: calc(50% - 132px); */
+}
+
+#logo {
+  content: url("../assets/agon-logo-light.svg");
+  width: 100px;
+  height: 28.66666666666667px;
+  top: 15px;
 }

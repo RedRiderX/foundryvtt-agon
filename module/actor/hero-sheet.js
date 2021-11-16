@@ -20,7 +20,14 @@ export class agonHeroSheet extends ActorSheet {
   /** @override */
   getData() {
     const data = super.getData();
+    const actorData = data.actor.data;
     data.config = CONFIG.AGON;
+    // console.log('agon config added to actor sheet');
+    // console.log(actorData);
+    
+    // Re-define the template data references (backwards compatible)
+    data.item = actorData;
+    data.data = actorData.data;
     return data;
   }
 

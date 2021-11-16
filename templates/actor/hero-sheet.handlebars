@@ -15,7 +15,11 @@
         <label for="data.epithet" class="font-light">Epithet</label>
         <input type="text" name="data.epithet" value="{{data.epithet}}" placeholder="Clever-Eyed" class="w-auto"/>
         <select name="data.epithet_die">
-            {{selectOptions config.dieTypes selected=data.epithet_die localize=false}}
+            {{#select data.epithet_die}}
+            {{#each config.dieTypes}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+            {{/select}}
         </select>
     </div>
     <div class="name flex flex-row">
@@ -23,7 +27,11 @@
         <input type="text" name="name" value="{{actor.name}}" placeholder="Atrophos" class="w-auto"/>
         <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them" class="w-auto"/>
         <select name="data.name_die">
-            {{selectOptions config.dieTypes selected=data.name_die localize=false}}
+            {{#select data.name_die}}
+            {{#each config.dieTypes}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+            {{/select}}
         </select>
     </div>
     <div class="lineage flex flex-row">
@@ -51,7 +59,11 @@
                         data-roll="d@domains.{{domain}}"
                         data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
                     <select name="data.domains.{{domain}}" class="h-auto">
-                        {{selectOptions ../config.dieTypes selected=die localize=false}}
+                        {{#select die}}
+                        {{#each ../config.dieTypes}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                        {{/select}}
                     </select>
                 </div>
             {{/each}}

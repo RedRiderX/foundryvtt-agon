@@ -88,5 +88,4 @@ export class agonActor extends Actor {
     // Re-enable the button
     button.disabled = false;
   }
-  _;
 }
