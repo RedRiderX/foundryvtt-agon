@@ -95,20 +95,22 @@ export class agonStrifeSheet extends ActorSheet {
     const formData = new FormData(html[0].querySelector('form'));
     let dicePool = [];
     let name = formData.get('name').length ? formData.get('name') : null;
+    let nameDie = formData.get('nameDie').length ? formData.get('nameDie') : null;
     let epithet = formData.get('epithet').length ? formData.get('epithet') : null;
+    let epithetDie = formData.get('epithetDie').length ? formData.get('epithetDie') : null;
     let epithet2 = formData.get('epithet2').length ? formData.get('epithet2') : null;
+    let epithet2Die = formData.get('epithet2Die').length ? formData.get('epithet2Die') : null;
 
-    if (name) {
-      dicePool.push('1' + CONFIG.AGON.dieTypes[formData.get('nameDie')]);
+    if (name && CONFIG.AGON.dieTypes.includes(nameDie)) {
+      dicePool.push(nameDie);
     }
-    if (epithet) {
-      dicePool.push('1' + CONFIG.AGON.dieTypes[formData.get('epithetDie')]);
+    if (epithet && CONFIG.AGON.dieTypes.includes(epithetDie)) {
+      dicePool.push(epithetDie);
     }
-    if (epithet2) {
-      dicePool.push('1' + CONFIG.AGON.dieTypes[formData.get('epithet2Die')]);
+    if (epithet2 && CONFIG.AGON.dieTypes.includes(epithet2Die)) {
+      dicePool.push(epithet2Die);
     }
     
-    // let rollFormula = ;
     let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {strife: formData.get('strifeLevel')});
     roll.evaluate();
 

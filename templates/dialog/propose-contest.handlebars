@@ -1,24 +1,30 @@
-<form>
+<form class="propose-contest-form">
     <h1>A Worth Opponent</h1>
     <div class="flex flex-row">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" />
         <select name="nameDie">
-            {{selectOptions config.dieTypes localize=false}}
+            {{#each config.dieTypes}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
     </div>
     <div class="flex flex-row">
         <label for="epithet">Epithet</label>
         <input type="text" name="epithet" id="epithet" />
         <select name="epithetDie">
-            {{selectOptions config.dieTypes localize=false}}
+            {{#each config.dieTypes}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
     </div>
     <div class="flex flex-row">
         <label for="epithet">Epithet</label>
         <input type="text" name="epithet2" id="epithet2" />
         <select name="epithet2Die">
-            {{selectOptions config.dieTypes localize=false}}
+            {{#each config.dieTypes}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
         </select>
     </div>
     <fieldset>
@@ -42,42 +48,80 @@
             </label>
         </div>
     </fieldset>
-    <h2>
-        Divine Wrath
-    </h2>
-    <p>???</p>
+    <fieldset>
+        <legend><h2>Divine Wrath</h2></legend>
+        <div class="flex flex-row">
+            <div>
+                <input
+                    type="radio"
+                    id="0"
+                    value="0"
+                    name="wrathLevel"
+                    checked
+                />
+                <label for="0">None</label>
+            </div>
+            <div>
+                <input type="radio" id="d8" value="d8" name="wrathLevel" />
+                <label for="d8">d8</label>
+            </div>
+            <div>
+                <input type="radio" id="d10" value="d10" name="wrathLevel" />
+                <label for="d10">d10</label>
+            </div>
+            <div>
+                <input type="radio" id="d12" value="d12" name="wrathLevel" />
+                <label for="d12">d12</label>
+            </div>
+        </div>
+    </fieldset>
     <fieldset>
         <legend><h2>Strife Level</h2></legend>
         <div class="flex flex-row">
             <div>
-                <input type="radio" id="+0" value="+0" name="strifeLevel" checked>
-                <label for="+0">+0</label>
-            </div>
-            <div>
-                <input type="radio" id="+4" value="+4" name="strifeLevel">
+                <input type="radio" id="+4" value="+4" name="strifeLevel" />
                 <label for="+4">+4</label>
             </div>
             <div>
-                <input type="radio" id="+5" value="+5" name="strifeLevel">
+                <input
+                    type="radio"
+                    id="+5"
+                    value="+5"
+                    name="strifeLevel"
+                    checked
+                />
                 <label for="+5">+5</label>
             </div>
             <div>
-                <input type="radio" id="+6" value="+6" name="strifeLevel">
+                <input type="radio" id="+6" value="+6" name="strifeLevel" />
                 <label for="+6">+6</label>
             </div>
         </div>
     </fieldset>
     <fieldset>
         <legend><h2>Domain</h2></legend>
-        <div class="flex flex-row flex-wrap">
+        <div class="flex flex-row flex-wrap font-bold">
             {{#each config.domains as |domain order|}}
-                <div class="domain flex flex-row items-stretch font-sans font-bold">
-                    <input type="radio" id="{{domain}}" value="{{domain}}" name="domain">
-                    <img src="systems/agon/assets/{{domain}}.svg" class="w-10" alt="">
+                <div class="domain">
+                    <input
+                        type="radio"
+                        id="{{domain}}"
+                        value="{{domain}}"
+                        name="domain"
+                        class="hidden"
+                    />
                     <label
-                        for="data.domains.{{domain}}"
-                        class="w-24 text-xl"
-                        data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
+                        for="{{domain}}"
+                        data-label="{{domain}}"
+                        class="flex flex-row items-stretch font-sans font-bold"
+                    >
+                        <img
+                            src="systems/agon/assets/{{domain}}.svg"
+                            class="w-10"
+                            alt=""
+                        />
+                        <span class="w-24 text-xl">{{localize (concat "AGON." domain)}}</span>
+                    </label>
                 </div>
             {{/each}}
         </div>

@@ -32,3 +32,9 @@ body {
   height: 28.66666666666667px;
   top: 15px;
 }
+
+.propose-contest-form {
+  & input.hidden:checked + label {
+    @apply ring-4;
+  }
+}

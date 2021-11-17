@@ -61,11 +61,15 @@ export class agonActor extends Actor {
         let target = button.dataset.target;
         let domain = button.dataset.domain;
 
+        if (typeof game.user.character === "undefined") {
+          throw "No Active Character!";
+        }
+
         let d = new Dialog({
           title: "Which of your aspects do you call on?",
           content: await renderTemplate(
             "systems/agon/templates/dialog/contest-reply.handlebars",
-            { target, domain }
+            { target, domain, hero: game.user.character.data }
           ),
           buttons: {
             roll: {
@@ -73,8 +77,8 @@ export class agonActor extends Actor {
               label: "Speak Your Name",
               callback: (html) =>
                 ChatMessage.create({
-                  content: html[0].querySelector("form .spoken_title")
-                    .outerHTML,
+                  content:
+                    html[0].querySelector("form .spoken_title").outerHTML,
                 }),
             },
           },
