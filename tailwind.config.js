@@ -8,10 +8,16 @@ module.exports = {
     fontFamily: {
       sans: ['Jost', 'sans-serif']
     },
-    extend: {},
+    extend: {
+      colors: {
+        'accent': '#B8CDD2'
+      }
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      margin: ['last']
+    },
   },
   corePlugins: {
     preflight: false,

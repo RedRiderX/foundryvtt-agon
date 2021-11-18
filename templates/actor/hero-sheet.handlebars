@@ -1,80 +1,83 @@
 <form class="{{cssClass}} container uppercase" autocomplete="off">
     {{!-- Sheet Header --}}
-    <header class="sheet-header flex flex-row">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-        <div class="flex flex-col">
-          <div>
-            glory meter
-          </div>
-          <div>
-            <img src="systems/agon/assets/agon-logo.svg" alt="AGON">
-          </div>
-        </div>
+    <header class="sheet-header flex flex-row mb-4">
+        <img src="systems/agon/assets/agon-logo.svg" alt="AGON" class="w-32 h-auto border-none">
+        <img class="profile-img h-auto w-14 bg-gray-400 border-2 border-solid border-gray-700 rounded-full" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+        <section class="glory sheet-section">
+            <h1>glory (d10)</h1>
+            <meter min="0" low="10" optimum="50" high="90" max="100" value="70" class="w-full"></meter>
+        </section>
     </header>
-    <div class="epithet flex flex-row">
-        <label for="data.epithet" class="font-light">Epithet</label>
-        <input type="text" name="data.epithet" value="{{data.epithet}}" placeholder="Clever-Eyed" class="w-auto"/>
-        <select name="data.epithet_die">
-            {{#select data.epithet_die}}
-            {{#each config.dieTypes}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-            {{/select}}
-        </select>
-    </div>
-    <div class="name flex flex-row">
-        <label for="name" class="">Name</label>
-        <input type="text" name="name" value="{{actor.name}}" placeholder="Atrophos" class="w-auto"/>
-        <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them" class="w-auto"/>
-        <select name="data.name_die">
-            {{#select data.name_die}}
-            {{#each config.dieTypes}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-            {{/select}}
-        </select>
-    </div>
-    <div class="lineage flex flex-row">
-        <label for="data.lineage" class="">Lineage</label>
-        <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-auto"/>
-    </div>
-    <div class="honored-god flex flex-row">
-        <label for="data.honored_god.name" class="">Honored God</label>
-        <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus" class="w-auto"/>
-        <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-auto"/>
-        <div class="divine-favours">
-            <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
-            <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
-        </div>
-    </div>
-    <div class="domains ">
-        <h1>Domains</h1>
-        <div class="flex flex-row">
-            {{#each data.domains as |die domain|}}
-                <div class="domain flex flex-row flex-1 items-stretch font-sans font-bold">
-                    <img src="systems/agon/assets/{{domain}}.svg" class="w-10" alt="">
-                    <label
-                        for="data.domains.{{domain}}"
-                        class="resource-label rollable w-24 text-xl"
-                        data-roll="d@domains.{{domain}}"
-                        data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
-                    <select name="data.domains.{{domain}}" class="h-auto">
-                        {{#select die}}
-                        {{#each ../config.dieTypes}}
-                            <option value="{{this}}">{{this}}</option>
-                        {{/each}}
-                        {{/select}}
-                    </select>
+    <div class="flex flex-row">
+        <section class="names">
+            <div class="epithet flex flex-row">
+                <label for="data.epithet" class="font-light">Epithet</label>
+                <input type="text" name="data.epithet" value="{{data.epithet}}" placeholder="Clever-Eyed" class="w-auto"/>
+                <select name="data.epithet_die">
+                    {{#select data.epithet_die}}
+                    {{#each config.dieTypes}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="name flex flex-row">
+                <label for="name" class="">Name</label>
+                <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name" class="w-auto"/>
+                <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them" class="w-auto"/>
+                <select name="data.name_die">
+                    {{#select data.name_die}}
+                    {{#each config.dieTypes}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    {{/select}}
+                </select>
+            </div>
+            <div class="lineage flex flex-row">
+                <label for="data.lineage" class="">Lineage</label>
+                <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-auto"/>
+            </div>
+            <div class="honored-god flex flex-row">
+                <label for="data.honored_god.name" class="">Honored God</label>
+                <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus" class="w-auto"/>
+                <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-auto"/>
+                <div class="divine-favours">
+                    <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
+                    <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
                 </div>
-            {{/each}}
-        </div>
+            </div>
+        </section>
+        <section class="domains sheet-section">
+            <h1>Domains</h1>
+            <div class="flex flex-col">
+                {{#each data.domains as |die domain|}}
+                    <div class="domain cut-corners flex flex-row flex-1 items-center font-sans font-bold bg-accent py-1 pl-2 mb-2 -ml-2 last:mb-0">
+                        <img src="systems/agon/assets/{{domain}}.svg" class="h-11 my-1 mr-2 border-none" alt="">
+                        <label
+                            for="data.domains.{{domain}}"
+                            class="resource-label rollable w-24 text-lg leading-none"
+                            data-roll="d@domains.{{domain}}"
+                            data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
+                        <div class="die-dropdown self-stretch -my-1 bg-white border-black border-2 border-solid flex flex-row items-center px-2">
+                            <select name="data.domains.{{domain}}" class="p-0 appearance-none h-full font-sans bg-transparent  text-lg font-bold uppercase border-0">
+                                {{#select die}}
+                                {{#each ../config.dieTypes}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                                {{/select}}
+                            </select>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
     </div>
 
-    <section class="favors">
+    <section class="favors sheet-section">
         <h1>Divine Favor</h1>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="flex flex-row flex-wrap">
             {{#each data.divines as |divine divineHandle|}}
-                <div class="divine">
+                <div class="divine w-1/4">
                     <div class="divine__strength font-bold">{{divine.strength}}</div>
                     <div class="divine__name">{{divine.name}}</div>
                     <div class="divine__favours">
@@ -86,75 +89,92 @@
         </div>
     </section>
 
-    <section class="style">
+    <section class="style sheet-section">
         <h1>Style & Notes</h1>
         {{editor content=data.style target="data.style" button=false owner=owner editable=editable}}
     </section>
-    <section class="recite">
+    {{!-- <section class="recite">
         <h1>Recite Your Deeds</h1>
         <p>Shouldn't this be part of the roll dialog?</p>
-    </section>
-    <section class="pathos">
-        <h1>Pathos</h1>
-    </section>
-    <section class="boons">
-        <h1>Boons</h1>
-    </section>
-    <section class="bonds">
-        <h1>Bonds</h1>
-        <div class="flex-column">
-            {{#each data.bonds as |bond bondKey|}}
-                <div class="bond flex flex-row">
-                    <input
-                        name="data.bonds.{{bondKey}}.name"
-                        type="text"
-                        value="{{bond.name}}"
-                        class="bond__name flex-grow"/>
-                    <input
-                        name="data.bonds.{{bondKey}}.strength"
-                        type="text"
-                        value="{{bond.strength}}"
-                        class="bond__strength"
-                        placeholder="0"
-                        data-dtype="Number"/>
+    </section> --}}
+    <div class="flex flex-row">
+        <section class="pathos sheet-section">
+            <h1>Pathos</h1>
+        </section>
+        <section class="fate sheet-section">
+            <h1>Fate</h1>
+        </section>
+    </div>
+    <div class="flex flex-row">
+        <section class="boons sheet-section">
+            <h1>Boons</h1>
+            <div class="flex flex-row flex-wrap">
+                {{#each data.boons as |boonStatus boon|}}
+                <div class="boon w-1/2">
+                    <input type="checkbox" id="boon_{{boon}}" name="boon_{{boon}}" {{#if boonStatus}}checked{{/if}}/>
+                    <label class="boon__name" for="{{boon}}">{{boon}}</label>
                 </div>
-            {{/each}}
-        </div>
-    </section>
-    <section class="trophies">
-        <h1>Great Deeds & Trophies</h1>
-        <div class="flex-column">
-            {{#each data.trophies as |trophy trophyKey|}}
-                <div class="bond flex flex-row">
-                    <input 
-                        type="checkbox"
-                        name="data.trophies.{{trophyKey}}.spent"
-                        {{checked trophy.spent}} />
-                    <input
-                        name="data.trophies.{{trophyKey}}.name"
-                        type="text"
-                        value="{{trophy.name}}"
-                        class="trophy__name flex-grow"/>
-                </div>
-            {{/each}}
-        </div>
-    </section>
+                {{/each}}
+            </div>
+        </section>
+        
+        <section class="virtues sheet-section">
+            <h1>Virtues</h1>
+            <div class="flex-row">
+                {{#each data.virtues as |virtueAmount virtue|}}
+                    <div class="virtue flex flex-row flex-1">
+                        <label
+                            for="data.virtues.{{virtue}}">{{virtue}}</label>
+                        <input
+                            name="data.virtues.{{virtue}}"
+                            type="number"
+                            value="{{virtueAmount}}"/>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+    </div>
+    <div class="flex flex-row">
+        <section class="bonds sheet-section">
+            <h1>Bonds</h1>
+            <div class="flex-column">
+                {{#each data.bonds as |bond bondKey|}}
+                    <div class="bond flex flex-row">
+                        <input
+                            name="data.bonds.{{bondKey}}.name"
+                            type="text"
+                            value="{{bond.name}}"
+                            class="bond__name flex-grow"/>
+                        <input
+                            name="data.bonds.{{bondKey}}.strength"
+                            type="text"
+                            value="{{bond.strength}}"
+                            class="bond__strength"
+                            placeholder="0"
+                            data-dtype="Number"/>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+        <section class="trophies sheet-section">
+            <h1>Great Deeds & Trophies</h1>
+            <div class="flex-column">
+                {{#each data.trophies as |trophy trophyKey|}}
+                    <div class="bond flex flex-row">
+                        <input
+                            type="checkbox"
+                            name="data.trophies.{{trophyKey}}.spent"
+                            {{checked trophy.spent}} />
+                        <input
+                            name="data.trophies.{{trophyKey}}.name"
+                            type="text"
+                            value="{{trophy.name}}"
+                            class="trophy__name flex-grow"/>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+    </div>
     
-    <section class="virtues">
-        <h1>Virtues</h1>
-        <div class="flex-row">
-            {{#each data.virtues as |virtueAmount virtue|}}
-                <div class="virtue flex flex-row flex-1">
-                    <label
-                        for="data.virtues.{{virtue}}">{{virtue}}</label>
-                    <input
-                        name="data.virtues.{{virtue}}"
-                        type="number"
-                        value="{{virtueAmount}}"/>
-                </div>
-            {{/each}}
-        </div>
-
-    </section>
 </form>
 

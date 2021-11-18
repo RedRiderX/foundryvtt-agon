@@ -38,3 +38,62 @@ body {
     @apply ring-4;
   }
 }
+
+.sheet.actor__hero {
+  & h1 {
+    font-size: inherit;
+    border-bottom: none;
+  }
+
+  & .window-content {
+    @apply bg-white;
+    background-image: none;
+  }
+}
+
+.sheet-section {
+  @apply border-solid border-0 border-l-2 border-gray-700 pl-2 mb-4;
+
+  &.glory {
+    @apply mb-0;
+  }
+}
+
+.die-dropdown {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+
+  & select {
+    grid-area: select;
+    @apply w-full pr-4;
+  }
+
+  &::after {
+    @apply bg-gray-700;
+    grid-area: select;
+    content: "";
+    justify-self: end;
+    width: 0.8em;
+    height: 0.5em;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+}
+
+
+.cut-corners {
+  position: relative;
+  
+  &:before,
+  &:after {
+    @apply absolute right-0 w-1 h-1 border-black border-2 border-solid border-r-0 bg-white pointer-events-none;
+    content: '';
+  }
+  
+  &:before {
+    @apply top-0 border-t-0;
+  }
+  &:after {
+    @apply bottom-0 border-b-0;
+  }
+}

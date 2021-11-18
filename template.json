@@ -54,6 +54,46 @@
           "name": "Hera",
           "strength": "Cunning",
           "favors": ["open", "open"]
+        },
+        "hermes": {
+          "name": "Hermes",
+          "strength": "Daring",
+          "favors": ["open", "open"]
+        },
+        "ares": {
+          "name": "Ares",
+          "strength": "Ferocity",
+          "favors": ["open", "open"]
+        },
+        "poseidon": {
+          "name": "Poseidon",
+          "strength": "Fortitude",
+          "favors": ["open", "open"]
+        },
+        "hephaistos": {
+          "name": "Hephaistos",
+          "strength": "Ingenuity",
+          "favors": ["open", "open"]
+        },
+        "hekate": {
+          "name": "Hekate",
+          "strength": "Insight",
+          "favors": ["open", "open"]
+        },
+        "apollo": {
+          "name": "Apollo",
+          "strength": "Knowledge",
+          "favors": ["open", "open"]
+        },
+        "artemis": {
+          "name": "Artemis",
+          "strength": "Precision",
+          "favors": ["open", "open"]
+        },
+        "athena": {
+          "name": "Athena",
+          "strength": "Wisdom",
+          "favors": ["open", "open"]
         }
       },
       "style": "<p>Record your hero's style: their look, armor, and favored weapon</p>",
@@ -83,7 +123,14 @@
         }
       ],
       "boons": {
-        "d10-advance": false
+        "domain-d10-advance": false,
+        "domain-d8-advance-1": false,
+        "domain-d8-advance-2": false,
+        "epithet-d8-advance": false,
+        "2nd-epithet": false,
+        "bolster-bonus": false,
+        "pathos-bonus": false,
+        "favor-bonus": false
       },
       "virtues": {
         "acumen": 0,
