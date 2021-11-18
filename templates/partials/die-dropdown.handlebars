@@ -1,0 +1,9 @@
+<div class="die-dropdown flex-initial self-stretch bg-white border-black border-2 border-solid flex flex-row items-center px-2">
+    <select name="{{name}}" class="p-0 appearance-none h-full font-sans bg-transparent  text-lg font-bold uppercase border-0">
+        {{#select value}}
+        {{#each dieTypes}}
+            <option value="{{this}}">{{this}}</option>
+        {{/each}}
+        {{/select}}
+    </select>
+</div>

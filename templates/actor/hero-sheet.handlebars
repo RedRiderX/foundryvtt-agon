@@ -1,72 +1,71 @@
 <form class="{{cssClass}} container uppercase" autocomplete="off">
-    {{!-- Sheet Header --}}
-    <header class="sheet-header flex flex-row mb-4">
-        <img src="systems/agon/assets/agon-logo.svg" alt="AGON" class="w-32 h-auto border-none">
-        <img class="profile-img h-auto w-14 bg-gray-400 border-2 border-solid border-gray-700 rounded-full" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-        <section class="glory sheet-section">
-            <h1>glory (d10)</h1>
-            <meter min="0" low="10" optimum="50" high="90" max="100" value="70" class="w-full"></meter>
-        </section>
-    </header>
     <div class="flex flex-row">
-        <section class="names">
-            <div class="epithet flex flex-row">
-                <label for="data.epithet" class="font-light">Epithet</label>
-                <input type="text" name="data.epithet" value="{{data.epithet}}" placeholder="Clever-Eyed" class="w-auto"/>
-                <select name="data.epithet_die">
-                    {{#select data.epithet_die}}
-                    {{#each config.dieTypes}}
-                        <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-            <div class="name flex flex-row">
-                <label for="name" class="">Name</label>
-                <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name" class="w-auto"/>
-                <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them" class="w-auto"/>
-                <select name="data.name_die">
-                    {{#select data.name_die}}
-                    {{#each config.dieTypes}}
-                        <option value="{{this}}">{{this}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-            </div>
-            <div class="lineage flex flex-row">
-                <label for="data.lineage" class="">Lineage</label>
-                <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-auto"/>
-            </div>
-            <div class="honored-god flex flex-row">
-                <label for="data.honored_god.name" class="">Honored God</label>
-                <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus" class="w-auto"/>
-                <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-auto"/>
-                <div class="divine-favours">
-                    <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
-                    <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
+        {{!-- Sheet Header --}}
+        <div>
+            <header class="sheet-header flex flex-row mb-4">
+                <img src="systems/agon/assets/agon-logo.svg" alt="AGON" class="logo">
+                <img class="profile-img h-auto w-14 bg-gray-400 border-2 border-solid border-gray-700 rounded-full" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+                <section class="glory sheet-section">
+                    <h1>glory (d10)</h1>
+                    <meter min="0" low="10" optimum="50" high="90" max="100" value="70" class="w-full"></meter>
+                </section>
+            </header>
+            <section class="names text-lg">
+                <div class="epithet bg-accent cut-corners flex flex-row items-stretch mb-2">
+                    <label for="data.epithet" class="px-3 py-2 flex-initial leading-none self-center">Epithet</label>
+                    <input
+                        type="text"
+                        name="data.epithet"
+                        value="{{data.epithet}}"
+                        placeholder="Clever-Eyed"
+                        style="margin-right: -2px;"/>
+                    {{> "systems/agon/templates/partials/die-dropdown.handlebars"
+                        name='data.epithet_die'
+                        value=data.epithet_die
+                        dieTypes=config.dieTypes}}
                 </div>
-            </div>
-        </section>
+                <div class="name bg-accent cut-corners flex flex-row items-stretch mb-2">
+                    <label for="name" class="px-3 py-2 flex-initial leading-none self-center">Name</label>
+                    <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name"
+                        style="margin-right: -2px;"/>
+                    <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them"
+                        style="margin-right: -2px;"/>
+                    {{> "systems/agon/templates/partials/die-dropdown.handlebars"
+                        name='data.name_die'
+                        value=data.name_die
+                        dieTypes=config.dieTypes}}
+                </div>
+                <div class="lineage bg-accent cut-corners flex flex-row items-stretch mb-2">
+                    <label for="data.lineage" class="px-3 py-2 flex-initial leading-none self-center">Lineage</label>
+                    <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-40"/>
+                </div>
+                <div class="honored-god bg-accent flex flex-row items-stretch relative">
+                    <label for="data.honored_god.name" class="px-3 py-2 flex-initial leading-none self-center">Honored God</label>
+                    <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus"
+                        style="margin-right: -2px;"/>
+                    <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-32"/>
+                    <div class="divine-favours absolute top-0 -right-4 flex flex-col">
+                        <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
+                        <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
+                    </div>
+                </div>
+            </section>
+        </div>
         <section class="domains sheet-section">
             <h1>Domains</h1>
             <div class="flex flex-col">
                 {{#each data.domains as |die domain|}}
-                    <div class="domain cut-corners flex flex-row flex-1 items-center font-sans font-bold bg-accent py-1 pl-2 mb-2 -ml-2 last:mb-0">
-                        <img src="systems/agon/assets/{{domain}}.svg" class="h-11 my-1 mr-2 border-none" alt="">
+                    <div class="domain cut-corners flex flex-row flex-1 items-center font-sans font-bold bg-accent pl-2 mb-2 -ml-2 last:mb-0">
+                        <img src="systems/agon/assets/{{domain}}.svg" class="h-11 my-2 mr-2 border-none" alt="">
                         <label
                             for="data.domains.{{domain}}"
                             class="resource-label rollable w-24 text-lg leading-none"
                             data-roll="d@domains.{{domain}}"
                             data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
-                        <div class="die-dropdown self-stretch -my-1 bg-white border-black border-2 border-solid flex flex-row items-center px-2">
-                            <select name="data.domains.{{domain}}" class="p-0 appearance-none h-full font-sans bg-transparent  text-lg font-bold uppercase border-0">
-                                {{#select die}}
-                                {{#each ../config.dieTypes}}
-                                    <option value="{{this}}">{{this}}</option>
-                                {{/each}}
-                                {{/select}}
-                            </select>
-                        </div>
+                        {{> "systems/agon/templates/partials/die-dropdown.handlebars" 
+                            name=(concat 'data.domains.' domain)
+                            dieTypes=../config.dieTypes
+                            value=die}}
                     </div>
                 {{/each}}
             </div>
@@ -75,12 +74,12 @@
 
     <section class="favors sheet-section">
         <h1>Divine Favor</h1>
-        <div class="flex flex-row flex-wrap">
+        <div class="grid grid-cols-4 gap-4 -ml-2">
             {{#each data.divines as |divine divineHandle|}}
-                <div class="divine w-1/4">
+                <div class="divine bg-accent border-0 border-r-2 border-black border-solid px-4 py-2 relative mr-4">
                     <div class="divine__strength font-bold">{{divine.strength}}</div>
                     <div class="divine__name">{{divine.name}}</div>
-                    <div class="divine__favours">
+                    <div class="divine__favours absolute top-0 -right-4 flex flex-col">
                         <input type="checkbox" id="divine_favor_1" name="divine_favor_1" />
                         <input type="checkbox" id="divine_favor_2" name="divine_favor_2" />
                     </div>
@@ -91,7 +90,7 @@
 
     <section class="style sheet-section">
         <h1>Style & Notes</h1>
-        {{editor content=data.style target="data.style" button=false owner=owner editable=editable}}
+        {{editor content=data.style target="data.style" button=true owner=owner editable=editable}}
     </section>
     {{!-- <section class="recite">
         <h1>Recite Your Deeds</h1>
@@ -100,6 +99,57 @@
     <div class="flex flex-row">
         <section class="pathos sheet-section">
             <h1>Pathos</h1>
+            <div class="flex flex-row items-center">
+                <div class="pathos-line">
+                    <input
+                        type="radio"
+                        value="1"
+                        name="pathos"
+                        class="m-0 static"
+                    />
+                </div>
+                <div class="pathos-line">
+                    <input
+                        type="radio"
+                        value="2"
+                        name="pathos"
+                        class="m-0 static"
+                    />
+                </div>
+                <div class="pathos-line">
+                    <input
+                        type="radio"
+                        value="3"
+                        name="pathos"
+                        class="m-0 static"
+                    />
+                </div>
+                <div class="pathos-line">
+                    <input
+                        type="radio"
+                        value="4"
+                        name="pathos"
+                        class="m-0 static"
+                    />
+                </div>
+                <div class="pathos-line">
+                    <input
+                        type="radio"
+                        value="5"
+                        name="pathos"
+                        class="m-0 static"
+                    />
+                </div>
+                <div class="flex flex-col bg-gray-300 items-center p-1 pb-2 -ml-2 -mt-4">
+                    <label class="text-sm">Agony</label>
+                    <input
+                        type="radio"
+                        value="6"
+                        name="pathos"
+                        class="m-0 static"
+                    />
+                </div>
+            </div>
         </section>
         <section class="fate sheet-section">
             <h1>Fate</h1>
@@ -111,7 +161,7 @@
             <div class="flex flex-row flex-wrap">
                 {{#each data.boons as |boonStatus boon|}}
                 <div class="boon w-1/2">
-                    <input type="checkbox" id="boon_{{boon}}" name="boon_{{boon}}" {{#if boonStatus}}checked{{/if}}/>
+                    <input type="checkbox" id="boon_{{boon}}" name="boon_{{boon}}" {{checked boonStatus}}/>
                     <label class="boon__name" for="{{boon}}">{{boon}}</label>
                 </div>
                 {{/each}}

@@ -52,6 +52,7 @@ Hooks.once('init', async function() {
   // prep templates for later including
   return loadTemplates([
     "systems/agon/assets/vault-of-heaven.svg.handlebars",
+    "systems/agon/templates/partials/die-dropdown.handlebars",
   ]);
 });
 
