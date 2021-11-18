@@ -12,7 +12,7 @@
             </header>
             <section class="names text-lg">
                 <div class="epithet bg-accent cut-corners flex flex-row items-stretch mb-2">
-                    <label for="data.epithet" class="px-3 py-2 flex-initial leading-none self-center">Epithet</label>
+                    <label for="data.epithet" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Epithet</label>
                     <input
                         type="text"
                         name="data.epithet"
@@ -25,7 +25,7 @@
                         dieTypes=config.dieTypes}}
                 </div>
                 <div class="name bg-accent cut-corners flex flex-row items-stretch mb-2">
-                    <label for="name" class="px-3 py-2 flex-initial leading-none self-center">Name</label>
+                    <label for="name" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Name</label>
                     <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name"
                         style="margin-right: -2px;"/>
                     <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them"
@@ -36,11 +36,11 @@
                         dieTypes=config.dieTypes}}
                 </div>
                 <div class="lineage bg-accent cut-corners flex flex-row items-stretch mb-2">
-                    <label for="data.lineage" class="px-3 py-2 flex-initial leading-none self-center">Lineage</label>
+                    <label for="data.lineage" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Lineage</label>
                     <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-40"/>
                 </div>
                 <div class="honored-god bg-accent flex flex-row items-stretch relative">
-                    <label for="data.honored_god.name" class="px-3 py-2 flex-initial leading-none self-center">Honored God</label>
+                    <label for="data.honored_god.name" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Honored God</label>
                     <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus"
                         style="margin-right: -2px;"/>
                     <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-32"/>
@@ -99,7 +99,7 @@
     <div class="flex flex-row">
         <section class="pathos sheet-section">
             <h1>Pathos</h1>
-            <div class="flex flex-row items-center">
+            <div class="flex flex-row items-center  -ml-2">
                 <div class="pathos-line">
                     <input
                         type="radio"

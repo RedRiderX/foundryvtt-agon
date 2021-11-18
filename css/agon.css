@@ -105,10 +105,35 @@ body {
   }
 }
 
+.cut-corners--left {
+
+  &:before,
+  &:after {
+    @apply absolute left-0 w-1 h-1 bg-white pointer-events-none;
+    content: "";
+  }
+
+  &:before {
+    @apply top-0 border-t-0;
+  }
+  &:after {
+    @apply bottom-0 border-b-0;
+  }
+}
+
 .domains {
   width: 13.7rem;
   margin-left: 1rem;
   flex: 0 0 auto;
+}
+
+.favors .divine {
+  &:nth-child(2n),
+  &:nth-child(3),
+  &:nth-child(7),
+  &:nth-child(11) {
+    @apply relative cut-corners--left
+  }
 }
 
 .style {

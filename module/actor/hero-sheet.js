@@ -9,7 +9,7 @@ export class agonHeroSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["agon", "sheet", "actor", "actor__hero"],
       template: "systems/agon/templates/actor/hero-sheet.handlebars",
-      width: 800,
+      width: 700,
       height: 800,
       // tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
     });
