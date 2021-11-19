@@ -25,7 +25,7 @@ export class agonStrifeSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
-
+    var that = this;
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
 
@@ -35,7 +35,10 @@ export class agonStrifeSheet extends ActorSheet {
         ".vault-of-heaven .favor-toggle",
         this._onFavorToggle.bind(this)
       )
-      .on("click", ".create-contest", this._createContest.bind(this));
+      .on("click", ".create-contest", function(e) {
+        e.preventDefault();
+        that.constructor.createContest();
+      });
   }
 
   /* -------------------------------------------- */
@@ -69,15 +72,14 @@ export class agonStrifeSheet extends ActorSheet {
   //   }
   // }
 
-  _createContest(event) {
-    event.preventDefault();
+  static createContest() {
     let d = new Dialog({
       title: "Create a Contest",
       buttons: {
         roll: {
           icon: '<i class="fas fa-dice-d20"></i>',
           label: "Make Strife Roll",
-          callback: this._createStrifeRoll.bind(this),
+          callback: this.prototype._createStrifeRoll.bind(this),
         },
       },
     });

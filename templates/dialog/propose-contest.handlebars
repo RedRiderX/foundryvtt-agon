@@ -1,34 +1,36 @@
 <form class="propose-contest-form">
-    <h1>A Worth Opponent</h1>
-    <div class="flex flex-row">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" />
-        <select name="nameDie">
-            {{#each config.dieTypes}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-    </div>
-    <div class="flex flex-row">
-        <label for="epithet">Epithet</label>
-        <input type="text" name="epithet" id="epithet" />
-        <select name="epithetDie">
-            {{#each config.dieTypes}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-    </div>
-    <div class="flex flex-row">
-        <label for="epithet">Epithet</label>
-        <input type="text" name="epithet2" id="epithet2" />
-        <select name="epithet2Die">
-            {{#each config.dieTypes}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-    </div>
-    <fieldset>
-        <legend><h2>Foe Status</h2></legend>
+    <section class="sheet-section">
+        <h1>A Worth Opponent</h1>
+        <div class="flex flex-row">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
+            <select name="nameDie">
+                {{#each config.dieTypes}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="flex flex-row">
+            <label for="epithet">Epithet</label>
+            <input type="text" name="epithet" id="epithet" />
+            <select name="epithetDie">
+                {{#each config.dieTypes}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="flex flex-row">
+            <label for="epithet">Epithet</label>
+            <input type="text" name="epithet2" id="epithet2" />
+            <select name="epithet2Die">
+                {{#each config.dieTypes}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </section>
+    <section class="sheet-section">
+        <h2>Foe Status</h2>
         <div class="flex flex-row">
             <label for="epic">
                 <input type="checkbox" id="epic" name="epic" />
@@ -47,9 +49,9 @@
                 Sacred
             </label>
         </div>
-    </fieldset>
-    <fieldset>
-        <legend><h2>Divine Wrath</h2></legend>
+    </section>
+    <section class="sheet-section">
+        <h2>Divine Wrath</h2>
         <div class="flex flex-row">
             <div>
                 <input
@@ -74,9 +76,9 @@
                 <label for="d12">d12</label>
             </div>
         </div>
-    </fieldset>
-    <fieldset>
-        <legend><h2>Strife Level</h2></legend>
+    </section>
+    <section class="sheet-section">
+        <h2>Strife Level</h2>
         <div class="flex flex-row">
             <div>
                 <input type="radio" id="+4" value="+4" name="strifeLevel" />
@@ -97,12 +99,34 @@
                 <label for="+6">+6</label>
             </div>
         </div>
-    </fieldset>
-    <fieldset>
-        <legend><h2>Domain</h2></legend>
+    </section>
+    <section class="sheet-section">
+        <h2>Domain</h2>
         <div class="flex flex-row flex-wrap font-bold">
+            <div
+                class="domain font-sans font-bold bg-accent pl-2 mb-2 -ml-2 last:mb-0"
+            >
+                <input
+                    type="radio"
+                    id="none"
+                    value="none"
+                    name="domain"
+                    class="hidden"
+                />
+                <label for="none" class="flex flex-row flex-1 items-center">
+                    <img
+                        src="systems/agon/assets/any-domain.svg"
+                        class="h-11 my-2 mr-2 border-none"
+                        alt=""
+                    />
+                    <span class="w-24 text-lg leading-none">Hero's Choice</span>
+                </label>
+            </div>
+
             {{#each config.domains as |domain order|}}
-                <div class="domain">
+                <div
+                    class="domain font-sans font-bold bg-accent pl-2 mb-2 -ml-2 last:mb-0"
+                >
                     <input
                         type="radio"
                         id="{{domain}}"
@@ -112,15 +136,16 @@
                     />
                     <label
                         for="{{domain}}"
-                        data-label="{{domain}}"
-                        class="flex flex-row items-stretch font-sans font-bold"
+                        class="flex flex-row flex-1 items-center"
                     >
                         <img
                             src="systems/agon/assets/{{domain}}.svg"
-                            class="w-10"
+                            class="h-11 my-2 mr-2 border-none"
                             alt=""
                         />
-                        <span class="w-24 text-xl">{{localize (concat "AGON." domain)}}</span>
+                        <span class="w-24 text-lg leading-none">{{localize
+                                (concat "AGON." domain)
+                            }}</span>
                     </label>
                 </div>
             {{/each}}
