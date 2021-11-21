@@ -1,8 +1,8 @@
 <form class="propose-contest-form text-lg  uppercase">
     <section class="sheet-section">
         <h1>A Worth Opponent</h1>
-        <div class="name bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
-            <label for="name" class="px-3 py-2 flex-initial leading-none self-center">Name</label>
+        <div class="name bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
+            <label for="name" class="flex-none w-24 px-3 py-2 leading-none self-center">Name</label>
             <input type="text" name="name" placeholder="Hero Name"
                 style="margin-right: -2px;"/>
             {{> "systems/agon/templates/partials/die-dropdown.handlebars"
@@ -10,8 +10,8 @@
                 value='d6'
                 dieTypes=config.dieTypes}}
         </div>
-        <div class="epithet bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
-            <label for="epithet" class="px-3 py-2 flex-initial leading-none self-center uppercase">Epithet</label>
+        <div class="epithet bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
+            <label for="epithet" class="flex-none w-24 px-3 py-2 leading-none self-center uppercase">Epithet</label>
             <input
                 type="text"
                 name="epithet"
@@ -22,8 +22,8 @@
                 value='d6'
                 dieTypes=config.dieTypes}}
         </div>
-        <div class="epithet bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
-            <label for="epithet2" class="px-3 py-2 flex-initial leading-none self-center uppercase">Epithet</label>
+        <div class="epithet bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
+            <label for="epithet2" class="flex-none w-24 px-3 py-2 leading-none self-center uppercase">Epithet</label>
             <input
                 type="text"
                 name="epithet2"
@@ -112,9 +112,9 @@
     </section>
     <section class="sheet-section">
         <h2>Domain</h2>
-        <div class="flex flex-row flex-wrap font-bold -ml-2">
+        <div class="flex flex-row flex-wrap font-bold -ml-2 -mt-2">
             <div
-                class="domain font-sans font-bold bg-accent-300  mb-2 mr-2"
+                class="domain font-sans font-bold bg-accent-200 mt-2 mr-2 w-full"
             >
                 <input
                     type="radio"
@@ -136,7 +136,7 @@
 
             {{#each config.domains as |domain order|}}
                 <div
-                    class="domain font-sans font-bold bg-accent-300 mb-2 mr-2 last:mb-0"
+                    class="domain font-sans font-bold bg-accent-200 mt-2 mr-2"
                 >
                     <input
                         type="radio"

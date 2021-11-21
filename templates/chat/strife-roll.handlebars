@@ -1,30 +1,47 @@
-<div class="agon chat-card">
-    <p>You face </p>
-    <strong>
-        {{epithet}} 
-        {{#if epithet2}} and {{ epithet2 }} {{/if}}
-        {{ name }}</strong>
-    <p>in a 
+<div class="agon chat-card strife-roll">
+    <p class="m-0">You face
+        <strong>
+            {{epithet}}
+            {{#if epithet2}} and {{epithet2}} {{/if}}
+            {{name}}</strong>
+        in a
         <strong>
             {{#if epic}} Epic {{/if}}
             {{#if mythic}} Mythic {{/if}}
             {{#if perilous}} Perilous {{/if}}
             {{#if sacred}} Sacred {{/if}}
         </strong>
-        contest of </p>
-    <div class="domain flex flex-row flex-1 items-stretch font-sans font-bold">
-        <img src="systems/agon/assets/{{domain}}.svg" class="w-10" alt="">
-        <label
-            for="data.domains.{{domain}}"
-            class="w-24 text-xl"
-            data-label="{{domain}}">{{localize (concat "AGON." domain)}}</label>
+        contest of
+    </p>
+    <div
+        class="flex flex-row justify-between items-stretch border-2 border-l-0 border-white uppercase w-56 my-4 -ml-4 pl-2"
+    >
+        <div class="domain flex flex-row items-center pl-2 mr-2">
+            <img
+                src="systems/agon/assets/{{domain}}-light.svg"
+                class="h-11 my-2 mr-2 border-none"
+                alt=""
+            />
+            <label
+                for="data.domains.{{domain}}"
+                class="w-24 text-lg leading-none"
+                data-label="{{domain}}"
+            >{{localize (concat "AGON." domain)}}</label>
+        </div>
+        <div class="flex flex-col flex-none bg-white text-black font-bold">
+            <div class="flex-none px-2 pt-1">Target</div>
+            <div
+                class="text-xl flex flex-grow justify-center items-center"
+            ><span>{{target}}</span></div>
+        </div>
     </div>
-    <p>The Target is <strong>{{ target }}</strong></p>
-    <h2>Who will face this contest?</h2>
+    {{!-- <h2 class="border-none text-base m-0 mb-1 text-center">Who will face this contest?</h2> --}}
     <div class="card-actions">
         <button
+            class="chat-cta--transparent"
             data-action="contest-reply"
-            data-target="{{ target }}"
-            data-domain="{{ domain }}">Answer the Call</button>
+            data-target="{{target}}"
+            data-domain="{{domain}}"
+        ><i class="fas fa-dice-d20"></i>Answer the Call</button>
     </div>
 </div>

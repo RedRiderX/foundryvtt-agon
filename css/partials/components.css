@@ -87,3 +87,12 @@
     @apply bottom-0 border-b-0;
   }
 }
+
+.divine-favours {
+    @apply absolute top-0 flex flex-col h-full justify-around;
+    right: -8px;
+}
+
+.divine__favours  {
+    right: -10px;
+}

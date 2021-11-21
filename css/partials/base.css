@@ -16,7 +16,8 @@ body {
   background-image: url("../assets/agon-bg.webp");
 }
 
-.app {
+.app,
+.chat-message {
   @apply bg-gray-200 text-black rounded-none font-sans;
   background-image: none;
 
@@ -30,6 +31,25 @@ body {
   .file {
     @apply normal-case;
   } */
+}
+
+#chat-log {
+    @apply divide-y-2 divide-black;
+}
+
+.chat-message {
+    @apply border-0 p-0 my-2 mx-0;
+
+    & .message-header {
+        @apply p-1;
+    }
+}
+
+.strife-roll {
+    @apply bg-black text-white p-4 border-l-2 border-white;
+    background-image: url('../assets/contest-background.webp');
+    background-size: cover;
+    background-position: -50% bottom;
 }
 
 .window-app {
@@ -58,7 +78,7 @@ body {
   top: 15px;
 }
 
-.dialog .dialog-buttons button {
+.primary-cta {
     @apply 
         uppercase 
         border-2 border-black bg-accent-300 text-black 
@@ -72,4 +92,17 @@ body {
     &:hover {
         box-shadow: inset 0 0 0 5px theme('backgroundColor.accent.300'), inset 0 0 0 7px black;
     }
+}
+
+.chat-cta--transparent {
+    @apply uppercase text-sm font-sans rounded-none bg-transparent text-white border-2 border-white;
+    line-height: 3;
+    
+    &:hover {
+        box-shadow: inset 0 0 0 5px black, inset 0 0 0 7px white;
+    }
+}
+
+.dialog .dialog-buttons button {
+    @apply primary-cta;
 }

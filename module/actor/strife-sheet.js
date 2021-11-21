@@ -9,7 +9,7 @@ export class agonStrifeSheet extends ActorSheet {
       classes: ["agon", "sheet", "actor", "actor__strife"],
       template: "systems/agon/templates/actor/strife-sheet.handlebars",
       width: 800,
-      height: 800,
+      height: 830,
     });
   }
 

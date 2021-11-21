@@ -38,7 +38,7 @@
     @apply relative cut-corners;
 
     & *:checked + label {
-      @apply bg-accent-200;
+      @apply bg-accent-300;
       box-shadow: inset 2px 0px black;
     }
   }
@@ -51,7 +51,6 @@
     border-2 border-black border-l-0 
     divide-x-2 divide-black 
     -ml-2 w-min;
-
 
   & [type="radio"] {
     @apply hidden;
@@ -134,33 +133,59 @@
 }
 
 .stroked-checkbox {
-    & [type="checkbox"] {
-        @apply hidden;
+  & [type="checkbox"] {
+    @apply hidden;
+  }
+
+  & label {
+    @apply relative pl-7 text-base pr-4;
+
+    &:before {
+      @apply absolute border-black border-2 bg-white transform rotate-45 left-0;
+      content: "";
+      width: 0.6rem;
+      height: 0.6rem;
+      top: calc(50% - 7px);
+      left: 5px;
     }
 
-    & label {
-        @apply relative pl-7 text-base pr-4;
-
-        &:before {
-            @apply absolute border-black border-2 bg-white transform rotate-45 left-0;
-            content: '';
-            width: .6rem;
-            height: .6rem;
-            top: calc(50% - 7px);
-            left: 5px;
-        }
-        
-        &:after {
-            @apply absolute hidden bg-black transform -rotate-45;
-            content: '';
-            width: 1.25rem;
-            height: 2px;
-            left: 2px;
-            top: calc(50% - 1px);
-        }
+    &:after {
+      @apply absolute hidden bg-black transform -rotate-45;
+      content: "";
+      width: 1.25rem;
+      height: 2px;
+      left: 2px;
+      top: calc(50% - 1px);
     }
+  }
 
-    & :checked + label:after {
-        @apply block;
-    }
+  & :checked + label:after {
+    @apply block;
+  }
+}
+
+.stroked-checkbox--isolated[type="checkbox"] {
+  @apply appearance-none relative m-0;
+
+  &:before {
+    @apply absolute border-black border-2 bg-white transform rotate-45 left-0;
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    top: calc(50% - 7px);
+    left: 4px;
+  }
+
+  &:after {
+    @apply absolute hidden bg-black transform -rotate-45;
+    content: "";
+    width: 1.25rem;
+    height: 2px;
+    left: 2px;
+    top: calc(50% - 1px);
+  }
+
+  &:checked:after {
+    @apply block;
+  }
 }
