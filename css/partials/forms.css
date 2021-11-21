@@ -1,10 +1,135 @@
-.agon.sheet form.container {
+.window-content {
+  & input[type="text"],
+  & input[type="number"],
+  & input[type="password"],
+  & input[type="date"],
+  & input[type="time"] {
+    @apply h-auto border-2 border-black rounded-none py-1 px-2 bg-gray-100;
+  }
+}
 
-    & input[type="text"],
-    & input[type="number"],
-    & input[type="password"],
-    & input[type="date"],
-    & input[type="time"] {
-        @apply h-auto border-solid border-2 border-black rounded-none py-1 px-2 bg-gray-100;
+.die-dropdown {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+
+  & select {
+    grid-area: select;
+    @apply pr-4;
+  }
+
+  &::after {
+    @apply bg-gray-700;
+    grid-area: select;
+    content: "";
+    justify-self: end;
+    width: 0.8em;
+    height: 0.5em;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+
+}
+
+.propose-contest-form {
+  /* & input.hidden:checked + label {
+    @apply ring-4;
+  } */
+
+  & .domain {
+    @apply relative cut-corners;
+
+    & *:checked + label {
+      @apply bg-accent-200;
+      box-shadow: inset 2px 0px black;
     }
+  }
+}
+
+.radio-row {
+  @apply flex flex-row items-stretch
+    cut-corners--border
+    bg-gray-100 
+    border-2 border-black border-l-0 
+    divide-x-2 divide-black 
+    -ml-2 w-min;
+
+
+  & [type="radio"] {
+    @apply hidden;
+  }
+
+  & label {
+    @apply block py-1 px-3;
+  }
+
+  & [type="radio"]:checked + label {
+    @apply bg-gray-400 text-white;
+  }
+}
+
+.domains {
+  width: 13.7rem;
+  margin-left: 1rem;
+  flex: 0 0 auto;
+}
+
+.favors .divine {
+  &:nth-child(2n),
+  &:nth-child(3),
+  &:nth-child(7),
+  &:nth-child(11) {
+    @apply cut-corners--left;
+  }
+}
+
+.style {
+  & .editor {
+    @apply -ml-2 bg-gray-100 p-2;
+  }
+  & .editor-edit {
+    @apply block top-auto bottom-2 right-2 border-none shadow-none bg-accent-300 py-1 px-2;
+  }
+}
+
+.pathos-line {
+  @apply relative mx-2;
+
+  &:after {
+    @apply bg-gray-500 absolute -right-8 w-8;
+    content: "";
+    height: 2px;
+    top: calc(50% - 1px);
+  }
+}
+
+.fate-line {
+  @apply relative mx-2;
+
+  &:after {
+    @apply bg-gray-500 absolute -right-4 w-4;
+    content: "";
+    height: 2px;
+    top: calc(50% - 1px);
+  }
+
+  &:last-child:after {
+    content: none;
+  }
+}
+
+.fate-line--marked {
+  &:before {
+    @apply absolute bg-black rounded-full;
+    content: "";
+    height: 4px;
+    width: 4px;
+    top: calc(50% - 3px);
+    right: calc(50% - 2px);
+  }
+}
+
+.fate {
+  & [type="checkbox"] {
+    @apply w-auto h-auto m-0;
+  }
 }

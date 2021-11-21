@@ -1,32 +1,38 @@
-<form class="propose-contest-form">
+<form class="propose-contest-form text-lg  uppercase">
     <section class="sheet-section">
         <h1>A Worth Opponent</h1>
-        <div class="flex flex-row">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" />
-            <select name="nameDie">
-                {{#each config.dieTypes}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
+        <div class="name bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
+            <label for="name" class="px-3 py-2 flex-initial leading-none self-center">Name</label>
+            <input type="text" name="name" placeholder="Hero Name"
+                style="margin-right: -2px;"/>
+            {{> "systems/agon/templates/partials/die-dropdown.handlebars"
+                name='nameDie'
+                value='d6'
+                dieTypes=config.dieTypes}}
         </div>
-        <div class="flex flex-row">
-            <label for="epithet">Epithet</label>
-            <input type="text" name="epithet" id="epithet" />
-            <select name="epithetDie">
-                {{#each config.dieTypes}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
+        <div class="epithet bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
+            <label for="epithet" class="px-3 py-2 flex-initial leading-none self-center uppercase">Epithet</label>
+            <input
+                type="text"
+                name="epithet"
+                placeholder="Clever-Eyed"
+                style="margin-right: -2px;"/>
+            {{> "systems/agon/templates/partials/die-dropdown.handlebars"
+                name='epithetDie'
+                value='d6'
+                dieTypes=config.dieTypes}}
         </div>
-        <div class="flex flex-row">
-            <label for="epithet">Epithet</label>
-            <input type="text" name="epithet2" id="epithet2" />
-            <select name="epithet2Die">
-                {{#each config.dieTypes}}
-                    <option value="{{this}}">{{this}}</option>
-                {{/each}}
-            </select>
+        <div class="epithet bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 -ml-2">
+            <label for="epithet2" class="px-3 py-2 flex-initial leading-none self-center uppercase">Epithet</label>
+            <input
+                type="text"
+                name="epithet2"
+                placeholder="Clever-Eyed"
+                style="margin-right: -2px;"/>
+            {{> "systems/agon/templates/partials/die-dropdown.handlebars"
+                name='epithet2Die'
+                value='d6'
+                dieTypes=config.dieTypes}}
         </div>
     </section>
     <section class="sheet-section">
@@ -52,39 +58,43 @@
     </section>
     <section class="sheet-section">
         <h2>Divine Wrath</h2>
-        <div class="flex flex-row">
+        <div class="radio-row">
             <div>
                 <input
                     type="radio"
                     id="0"
                     value="0"
                     name="wrathLevel"
+                    class="hidden"
                     checked
                 />
                 <label for="0">None</label>
             </div>
             <div>
-                <input type="radio" id="d8" value="d8" name="wrathLevel" />
+                <input type="radio" id="d8" value="d8" name="wrathLevel" class="hidden"/>
                 <label for="d8">d8</label>
             </div>
             <div>
-                <input type="radio" id="d10" value="d10" name="wrathLevel" />
+                <input type="radio" id="d10" value="d10" name="wrathLevel" class="hidden"/>
                 <label for="d10">d10</label>
             </div>
             <div>
-                <input type="radio" id="d12" value="d12" name="wrathLevel" />
+                <input type="radio" id="d12" value="d12" name="wrathLevel" class="hidden"/>
                 <label for="d12">d12</label>
             </div>
         </div>
     </section>
     <section class="sheet-section">
         <h2>Strife Level</h2>
-        <div class="flex flex-row">
-            <div>
-                <input type="radio" id="+4" value="+4" name="strifeLevel" />
-                <label for="+4">+4</label>
+        <div 
+            class="radio-row">
+            <div class="flex-grow-0">
+                <input type="radio" id="+4" value="+4" name="strifeLevel"/>
+                <label 
+                    for="+4"
+                    >+4</label>
             </div>
-            <div>
+            <div class="flex-grow-0">
                 <input
                     type="radio"
                     id="+5"
@@ -94,7 +104,7 @@
                 />
                 <label for="+5">+5</label>
             </div>
-            <div>
+            <div class="flex-grow-0">
                 <input type="radio" id="+6" value="+6" name="strifeLevel" />
                 <label for="+6">+6</label>
             </div>
@@ -102,9 +112,9 @@
     </section>
     <section class="sheet-section">
         <h2>Domain</h2>
-        <div class="flex flex-row flex-wrap font-bold">
+        <div class="flex flex-row flex-wrap font-bold -ml-2">
             <div
-                class="domain font-sans font-bold bg-accent pl-2 mb-2 -ml-2 last:mb-0"
+                class="domain font-sans font-bold bg-accent-300  mb-2 mr-2"
             >
                 <input
                     type="radio"
@@ -112,11 +122,12 @@
                     value="none"
                     name="domain"
                     class="hidden"
+                    checked
                 />
-                <label for="none" class="flex flex-row flex-1 items-center">
+                <label for="none" class="flex flex-row flex-1 items-center pl-2">
                     <img
                         src="systems/agon/assets/any-domain.svg"
-                        class="h-11 my-2 mr-2 border-none"
+                        class="w-9 h-11 my-2 mr-2 border-none"
                         alt=""
                     />
                     <span class="w-24 text-lg leading-none">Hero's Choice</span>
@@ -125,7 +136,7 @@
 
             {{#each config.domains as |domain order|}}
                 <div
-                    class="domain font-sans font-bold bg-accent pl-2 mb-2 -ml-2 last:mb-0"
+                    class="domain font-sans font-bold bg-accent-300 mb-2 mr-2 last:mb-0"
                 >
                     <input
                         type="radio"
@@ -136,7 +147,7 @@
                     />
                     <label
                         for="{{domain}}"
-                        class="flex flex-row flex-1 items-center"
+                        class="flex flex-row flex-1 items-center  pl-2"
                     >
                         <img
                             src="systems/agon/assets/{{domain}}.svg"

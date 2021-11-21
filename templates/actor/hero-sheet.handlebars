@@ -1,17 +1,17 @@
 <form class="{{cssClass}} container uppercase" autocomplete="off">
     <div class="flex flex-row">
         {{!-- Sheet Header --}}
-        <div>
+        <div class="mb-4">
             <header class="sheet-header flex flex-row mb-4">
                 <img src="systems/agon/assets/agon-logo.svg" alt="AGON" class="logo">
-                <img class="profile-img h-auto w-14 bg-gray-400 border-2 border-solid border-gray-700 rounded-full" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+                <img class="profile-img h-auto w-14 bg-gray-400 border-2 border-gray-700 rounded-full" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
                 <section class="glory sheet-section">
                     <h1>glory (d10)</h1>
                     <meter min="0" low="10" optimum="50" high="90" max="100" value="70" class="w-full"></meter>
                 </section>
             </header>
             <section class="names text-lg">
-                <div class="epithet bg-accent cut-corners flex flex-row items-stretch mb-2">
+                <div class="epithet bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2">
                     <label for="data.epithet" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Epithet</label>
                     <input
                         type="text"
@@ -24,7 +24,15 @@
                         value=data.epithet_die
                         dieTypes=config.dieTypes}}
                 </div>
-                <div class="name bg-accent cut-corners flex flex-row items-stretch mb-2">
+                <div class="epithet bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2 hidden">
+                    <label for="data.epithet2" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Epithet</label>
+                    <input
+                        type="text"
+                        name="data.epithet2"
+                        value="{{data.epithet2}}"
+                        placeholder="Clever-Eyed"/>
+                </div>
+                <div class="name bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2">
                     <label for="name" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Name</label>
                     <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name"
                         style="margin-right: -2px;"/>
@@ -35,11 +43,11 @@
                         value=data.name_die
                         dieTypes=config.dieTypes}}
                 </div>
-                <div class="lineage bg-accent cut-corners flex flex-row items-stretch mb-2">
+                <div class="lineage bg-accent-300 cut-corners--nested flex flex-row items-stretch mb-2">
                     <label for="data.lineage" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Lineage</label>
                     <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-40"/>
                 </div>
-                <div class="honored-god bg-accent flex flex-row items-stretch relative">
+                <div class="honored-god bg-accent-300 flex flex-row items-stretch relative">
                     <label for="data.honored_god.name" class="cut-corners--left px-3 py-2 flex-initial leading-none self-center">Honored God</label>
                     <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus"
                         style="margin-right: -2px;"/>
@@ -55,7 +63,7 @@
             <h1>Domains</h1>
             <div class="flex flex-col">
                 {{#each data.domains as |die domain|}}
-                    <div class="domain cut-corners flex flex-row flex-1 items-center font-sans font-bold bg-accent pl-2 mb-2 -ml-2 last:mb-0">
+                    <div class="domain cut-corners--nested flex flex-row flex-1 items-center font-sans font-bold bg-accent-300 pl-2 mb-2 -ml-2 last:mb-0">
                         <img src="systems/agon/assets/{{domain}}.svg" class="h-11 my-2 mr-2 border-none" alt="">
                         <label
                             for="data.domains.{{domain}}"
@@ -76,7 +84,7 @@
         <h1>Divine Favor</h1>
         <div class="grid grid-cols-4 gap-4 -ml-2">
             {{#each data.divines as |divine divineHandle|}}
-                <div class="divine bg-accent border-0 border-r-2 border-black border-solid px-4 py-2 relative mr-4">
+                <div class="divine bg-accent-300 border-0 border-r-2 border-black px-4 py-2 relative mr-4">
                     <div class="divine__strength font-bold">{{divine.strength}}</div>
                     <div class="divine__name">{{divine.name}}</div>
                     <div class="divine__favours absolute top-0 -right-4 flex flex-col">

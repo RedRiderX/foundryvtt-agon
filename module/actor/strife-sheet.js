@@ -35,7 +35,7 @@ export class agonStrifeSheet extends ActorSheet {
         ".vault-of-heaven .favor-toggle",
         this._onFavorToggle.bind(this)
       )
-      .on("click", ".create-contest", function(e) {
+      .on("click", ".create-contest", function (e) {
         e.preventDefault();
         that.constructor.createContest();
       });
@@ -73,16 +73,22 @@ export class agonStrifeSheet extends ActorSheet {
   // }
 
   static createContest() {
-    let d = new Dialog({
-      title: "Create a Contest",
-      buttons: {
-        roll: {
-          icon: '<i class="fas fa-dice-d20"></i>',
-          label: "Make Strife Roll",
-          callback: this.prototype._createStrifeRoll.bind(this),
+    let d = new Dialog(
+      {
+        title: "Create a Contest",
+        buttons: {
+          roll: {
+            icon: '<i class="fas fa-dice-d20"></i>',
+            label: "Make Strife Roll",
+            callback: this.prototype._createStrifeRoll.bind(this),
+          },
         },
       },
-    });
+      {
+        width: 340,
+        height: 635,
+      }
+    );
 
     renderTemplate("systems/agon/templates/dialog/propose-contest.handlebars", {
       actor: this.actor,
@@ -94,14 +100,24 @@ export class agonStrifeSheet extends ActorSheet {
   }
 
   _createStrifeRoll(html) {
-    const formData = new FormData(html[0].querySelector('form'));
+    const formData = new FormData(html[0].querySelector("form"));
     let dicePool = [];
-    let name = formData.get('name').length ? formData.get('name') : null;
-    let nameDie = formData.get('nameDie').length ? formData.get('nameDie') : null;
-    let epithet = formData.get('epithet').length ? formData.get('epithet') : null;
-    let epithetDie = formData.get('epithetDie').length ? formData.get('epithetDie') : null;
-    let epithet2 = formData.get('epithet2').length ? formData.get('epithet2') : null;
-    let epithet2Die = formData.get('epithet2Die').length ? formData.get('epithet2Die') : null;
+    let name = formData.get("name").length ? formData.get("name") : null;
+    let nameDie = formData.get("nameDie").length
+      ? formData.get("nameDie")
+      : null;
+    let epithet = formData.get("epithet").length
+      ? formData.get("epithet")
+      : null;
+    let epithetDie = formData.get("epithetDie").length
+      ? formData.get("epithetDie")
+      : null;
+    let epithet2 = formData.get("epithet2").length
+      ? formData.get("epithet2")
+      : null;
+    let epithet2Die = formData.get("epithet2Die").length
+      ? formData.get("epithet2Die")
+      : null;
 
     if (name && CONFIG.AGON.dieTypes.includes(nameDie)) {
       dicePool.push(nameDie);
@@ -112,19 +128,21 @@ export class agonStrifeSheet extends ActorSheet {
     if (epithet2 && CONFIG.AGON.dieTypes.includes(epithet2Die)) {
       dicePool.push(epithet2Die);
     }
-    
-    let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {strife: formData.get('strifeLevel')});
+
+    let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {
+      strife: formData.get("strifeLevel"),
+    });
     roll.evaluate();
 
     renderTemplate("systems/agon/templates/chat/strife-roll.handlebars", {
       name,
       epithet,
       epithet2,
-      epic: formData.get('epic'),
-      mythic: formData.get('mythic'),
-      perilous: formData.get('perilous'),
-      sacred: formData.get('sacred'),
-      domain: formData.get('domain'),
+      epic: formData.get("epic"),
+      mythic: formData.get("mythic"),
+      perilous: formData.get("perilous"),
+      sacred: formData.get("sacred"),
+      domain: formData.get("domain"),
       target: roll.total,
     }).then((html) => {
       ChatMessage.create({ content: html });

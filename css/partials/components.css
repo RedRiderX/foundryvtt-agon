@@ -1,0 +1,89 @@
+.sheet {
+  & .logo {
+    @apply h-auto border-none flex-none w-48;
+  }
+
+  & h1 {
+  }
+}
+
+.sheet-section {
+  @apply border-0 border-l-2 border-gray-700 pl-2 mb-4;
+
+  &.glory {
+    @apply mb-0;
+  }
+
+  & h1,
+  & h2 {
+    @apply text-base border-none leading-none;
+  }
+}
+
+.cut-corners {
+  @apply relative;
+
+  &:before,
+  &:after {
+    @apply absolute right-0 w-1 h-1 bg-white pointer-events-none;
+    content: "";
+  }
+
+  &:before {
+    @apply top-0 border-t-0;
+  }
+  &:after {
+    @apply bottom-0 border-b-0;
+  }
+}
+
+.cut-corners--border {
+  position: relative;
+
+  &:before,
+  &:after {
+    @apply absolute right-0 w-1 h-1 border-black border-2 border-r-0 bg-white pointer-events-none;
+    right: -2px;
+    content: "";
+  }
+
+  &:before {
+    @apply border-t-0;
+    top: -2px;
+  }
+  &:after {
+    @apply border-b-0;
+    bottom: -2px;
+  }
+}
+
+.cut-corners--nested {
+  @apply cut-corners--border;
+
+  &:before,
+  &:after {
+    @apply right-0;
+  }
+
+  &:before {
+    @apply top-0;
+  }
+  &:after {
+    @apply bottom-0;
+  }
+}
+
+.cut-corners--left {
+  &:before,
+  &:after {
+    @apply absolute left-0 w-1 h-1 bg-white pointer-events-none;
+    content: "";
+  }
+
+  &:before {
+    @apply top-0 border-t-0;
+  }
+  &:after {
+    @apply bottom-0 border-b-0;
+  }
+}
