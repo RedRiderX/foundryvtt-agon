@@ -85,8 +85,8 @@ export class agonStrifeSheet extends ActorSheet {
         },
       },
       {
-        width: 340,
-        height: 635,
+        width: 330,
+        height: 775,
       }
     );
 

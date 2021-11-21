@@ -27,7 +27,6 @@
     height: 0.5em;
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   }
-
 }
 
 .propose-contest-form {
@@ -132,4 +131,36 @@
   & [type="checkbox"] {
     @apply w-auto h-auto m-0;
   }
+}
+
+.stroked-checkbox {
+    & [type="checkbox"] {
+        @apply hidden;
+    }
+
+    & label {
+        @apply relative pl-7 text-base pr-4;
+
+        &:before {
+            @apply absolute border-black border-2 bg-white transform rotate-45 left-0;
+            content: '';
+            width: .6rem;
+            height: .6rem;
+            top: calc(50% - 7px);
+            left: 5px;
+        }
+        
+        &:after {
+            @apply absolute hidden bg-black transform -rotate-45;
+            content: '';
+            width: 1.25rem;
+            height: 2px;
+            left: 2px;
+            top: calc(50% - 1px);
+        }
+    }
+
+    & :checked + label:after {
+        @apply block;
+    }
 }
