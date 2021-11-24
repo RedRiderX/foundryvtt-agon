@@ -99,7 +99,7 @@ export class agonStrifeSheet extends ActorSheet {
     });
   }
 
-  _createStrifeRoll(html) {
+  async _createStrifeRoll(html) {
     const formData = new FormData(html[0].querySelector("form"));
     let dicePool = [];
     let name = formData.get("name").length ? formData.get("name") : null;
@@ -134,18 +134,31 @@ export class agonStrifeSheet extends ActorSheet {
     });
     roll.evaluate();
 
-    renderTemplate("systems/agon/templates/chat/strife-roll.handlebars", {
-      name,
-      epithet,
-      epithet2,
-      epic: formData.get("epic"),
-      mythic: formData.get("mythic"),
-      perilous: formData.get("perilous"),
-      sacred: formData.get("sacred"),
-      domain: formData.get("domain"),
-      target: roll.total,
-    }).then((html) => {
-      ChatMessage.create({ content: html });
+    let strifeRoll = await ChatMessage.create({
+      content: await renderTemplate(
+        "systems/agon/templates/chat/strife-roll.handlebars",
+        {
+          name,
+          epithet,
+          epithet2,
+          epic: formData.get("epic"),
+          mythic: formData.get("mythic"),
+          perilous: formData.get("perilous"),
+          sacred: formData.get("sacred"),
+          domain: formData.get("domain"),
+          target: roll.total,
+        }
+      ),
+    });
+
+    ChatMessage.create({
+      content: await renderTemplate(
+        "systems/agon/templates/chat/fortune-test.handlebars",
+        {
+          messageId: strifeRoll.id,
+        }
+      ),
+      whisper: [game.userId]
     });
   }
 

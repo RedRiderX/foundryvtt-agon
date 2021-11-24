@@ -54,11 +54,12 @@ export class agonActor extends Actor {
     const button = event.currentTarget;
     button.disabled = true;
     const action = button.dataset.action;
+    const messageId = button.dataset['message-id'];
+    const target = button.dataset.target;
 
     // Handle different actions
     switch (action) {
       case "contest-reply":
-        let target = button.dataset.target;
         let domain = button.dataset.domain;
 
         if (typeof game.user.character === "undefined") {
@@ -69,7 +70,8 @@ export class agonActor extends Actor {
           title: "Which of your aspects do you call on?",
           content: await renderTemplate(
             "systems/agon/templates/dialog/contest-reply.handlebars",
-            { target, domain, hero: game.user.character.data }
+            { target, domain, hero: game.user.character.data, 
+              config: CONFIG.AGON, }
           ),
           buttons: {
             roll: {
@@ -79,6 +81,8 @@ export class agonActor extends Actor {
                 ChatMessage.create({
                   content:
                     html[0].querySelector("form .spoken_title").outerHTML,
+                  flags: { "agon.relatedContest": messageId },
+                  roll: JSON.stringify(Roll.create("1d4").toJSON()),
                 }),
             },
           },
@@ -86,6 +90,32 @@ export class agonActor extends Actor {
           // close: html => console.log("This always is logged no matter which option is chosen")
         });
         d.render(true);
+        break;
+      case "test-fortune":
+        const heroRolls = game.messages.filter(
+          (message) => message.getFlag("agon", "relatedContest") === messageId
+        );
+
+        if (heroRolls.length < 1) {
+          console.log("no hero rolls found!");
+          break;
+        }
+
+        heroRolls.forEach((message) => {
+          console.log(message, message.roll.formula);
+          // execute roll, save to array
+        });
+
+        // if any higher then target prep success message, else fail message
+        // a three section message? one for success/fail, one for best hero,
+        // one for heros that suffer
+        // whisper to each player hints for reciting deeds
+
+        // ChatMessage.create({
+        //   content: html[0].querySelector("form .spoken_title").outerHTML,
+        //   flags: { "agon.relatedContest": messageId },
+        //   roll: JSON.stringify(Roll.create("1d4").toJSON()),
+        // });
         break;
     }
 

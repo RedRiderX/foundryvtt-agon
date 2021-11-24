@@ -6,4 +6,5 @@
 
 @import "partials/base.css";
 @import "partials/components.css";
+@import "partials/chat.css";
 @import "partials/forms.css";

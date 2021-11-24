@@ -18,6 +18,10 @@
   & h2 {
     @apply text-base border-none leading-none;
   }
+  
+  & h3 {
+    @apply text-sm normal-case -mt-2;
+  }
 }
 
 .cut-corners {

@@ -33,24 +33,6 @@ body {
   } */
 }
 
-#chat-log {
-    @apply divide-y-2 divide-black;
-}
-
-.chat-message {
-    @apply border-0 p-0 my-2 mx-0;
-
-    & .message-header {
-        @apply p-1;
-    }
-}
-
-.strife-roll {
-    @apply bg-black text-white p-4 border-l-2 border-white;
-    background-image: url('../assets/contest-background.webp');
-    background-size: cover;
-    background-position: -50% bottom;
-}
 
 .window-app {
   & .window-header {
