@@ -32,68 +32,81 @@
       "honored_god": {
         "name": "",
         "strength": "",
-        "favors": ["available", "available"]
+        "favor_1": false,
+        "favor_2": false
       },
       "divines": {
         "zeus": {
           "name": "Zeus",
           "strength": "Authority",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "aphrodite": {
           "name": "Aphrodite",
           "strength": "Beauty",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "demeter": {
           "name": "Demeter",
           "strength": "Conviction",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "hera": {
           "name": "Hera",
           "strength": "Cunning",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "hermes": {
           "name": "Hermes",
           "strength": "Daring",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "ares": {
           "name": "Ares",
           "strength": "Ferocity",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "poseidon": {
           "name": "Poseidon",
           "strength": "Fortitude",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "hephaistos": {
           "name": "Hephaistos",
           "strength": "Ingenuity",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "hekate": {
           "name": "Hekate",
           "strength": "Insight",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "apollo": {
           "name": "Apollo",
           "strength": "Knowledge",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "artemis": {
           "name": "Artemis",
           "strength": "Precision",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         },
         "athena": {
           "name": "Athena",
           "strength": "Wisdom",
-          "favors": ["open", "open"]
+          "favor_1": false,
+          "favor_2": false
         }
       },
       "style": "<p>Record your hero's style: their look, armor, and favored weapon</p>",

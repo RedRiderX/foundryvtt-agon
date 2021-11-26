@@ -37,7 +37,7 @@
   & .domain {
     @apply relative cut-corners;
 
-    & *:checked + label {
+    & :checked + label {
       @apply bg-accent-300;
       box-shadow: inset 2px 0px black;
     }
@@ -65,6 +65,31 @@
   }
 }
 
+.radio-group {
+  @apply flex flex-row flex-wrap 
+  border-black border-2 border-l-0
+  -ml-2  
+  cut-corners--border;
+
+  & [type="radio"] {
+    @apply hidden;
+  }
+
+  & div {
+    margin: 2px;
+  }
+
+  & label {
+    @apply block py-1 px-2;
+    /* width: 30%; */
+  }
+
+  & [type="radio"]:checked + label {
+    /* @apply bg-gray-400 text-white; */
+    box-shadow: inset 0 0 0 2px black;
+  }
+}
+
 .domains {
   width: 13.7rem;
   margin-left: 1rem;
@@ -89,14 +114,29 @@
   }
 }
 
+.pathos {
+
+  & [type="radio"] {
+    @apply block static m-0;
+  }
+}
+
 .pathos-line {
-  @apply relative mx-2;
+  @apply relative mr-2 last:mr-0;
 
   &:after {
-    @apply bg-gray-500 absolute -right-8 w-8;
+    @apply bg-gray-500 absolute -right-4 w-4;
     content: "";
     height: 2px;
     top: calc(50% - 1px);
+  }
+}
+
+.pathos-line--highlighted {
+  @apply flex flex-col bg-gray-300 items-center p-1 pt-2;
+
+  &:after {
+    top: 14px;
   }
 }
 
@@ -138,7 +178,7 @@
   }
 
   & label {
-    @apply relative pl-7 text-base pr-4;
+    @apply relative pl-7 text-base pr-4 block;
 
     &:before {
       @apply absolute border-black border-2 bg-white transform rotate-45 left-0;
@@ -188,4 +228,9 @@
   &:checked:after {
     @apply block;
   }
+}
+
+input[type="radio"].static {
+  position: static;
+  margin-right: .25rem;
 }

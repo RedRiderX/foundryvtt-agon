@@ -54,7 +54,7 @@ export class agonActor extends Actor {
     const button = event.currentTarget;
     button.disabled = true;
     const action = button.dataset.action;
-    const messageId = button.dataset['message-id'];
+    const messageId = button.dataset["message-id"];
     const target = button.dataset.target;
 
     // Handle different actions
@@ -70,20 +70,18 @@ export class agonActor extends Actor {
           title: "Which of your aspects do you call on?",
           content: await renderTemplate(
             "systems/agon/templates/dialog/contest-reply.handlebars",
-            { target, domain, hero: game.user.character.data, 
-              config: CONFIG.AGON, }
+            {
+              target,
+              domain,
+              hero: game.user.character.data,
+              config: CONFIG.AGON,
+            }
           ),
           buttons: {
             roll: {
               icon: '<i class="fas fa-dice-d20"></i>',
               label: "Speak Your Name",
-              callback: (html) =>
-                ChatMessage.create({
-                  content:
-                    html[0].querySelector("form .spoken_title").outerHTML,
-                  flags: { "agon.relatedContest": messageId },
-                  roll: JSON.stringify(Roll.create("1d4").toJSON()),
-                }),
+              callback: this.prototype._createStrifeRoll.bind(this),
             },
           },
           // render: html => console.log("Register interactivity in the rendered dialog"),
@@ -121,5 +119,38 @@ export class agonActor extends Actor {
 
     // Re-enable the button
     button.disabled = false;
+  }
+
+  async _createStrifeRoll(html) {
+    const formData = new FormData(html[0].querySelector("form"));
+    console.log(formData);
+    let dicePool = [];
+    let epithet1 = formData.has("epithet1");
+    let epithet2 = formData.has("epithet2");
+    let domain = formData.get("domain").length ? formData.get("domain") : null;
+    let favor = formData.get("favor").length ? formData.get("favor") : null;
+    let bond = formData.get("bond").length ? formData.get("bond") : null;
+    let support = formData.get("support").length
+      ? formData.get("support")
+      : null;
+    let advantage = formData.get("advantage").length
+      ? formData.get("advantage")
+      : null;
+
+    // let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {
+    //   strife: formData.get("strifeLevel"),
+    // });
+    // roll.evaluate();
+
+    // ChatMessage.create({
+    //   content: await renderTemplate(
+    //     "systems/agon/templates/chat/spoken-name.handlebars",
+    //     {
+    //       // messageId: strifeRoll.id,
+    //     }
+    //   ),
+    //   flags: { "agon.relatedContest": messageId },
+    //   roll: JSON.stringify(Roll.create("1d4").toJSON()),
+    // });
   }
 }

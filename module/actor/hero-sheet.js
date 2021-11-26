@@ -28,6 +28,10 @@ export class agonHeroSheet extends ActorSheet {
     // Re-define the template data references (backwards compatible)
     data.item = actorData;
     data.data = actorData.data;
+    data.pathosChecked = [];
+    for (let index = actorData.data.pathos.min; index < actorData.data.pathos.max; index++) {
+      data.pathosChecked[index] = actorData.data.pathos.value === index;
+    }
     return data;
   }
 

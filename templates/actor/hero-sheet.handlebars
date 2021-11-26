@@ -53,8 +53,21 @@
                         style="margin-right: -2px;"/>
                     <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-32"/>
                     <div class="divine-favours ">
-                        <input type="checkbox" id="divine_favor_1" name="divine_favor_1" class="stroked-checkbox--isolated"/>
-                        <input type="checkbox" id="divine_favor_2" name="divine_favor_2" class="stroked-checkbox--isolated" />
+                        <input 
+                            type="checkbox"
+                            id="divine_favor_1"
+                            name="data.honored_god.favor_1"
+                            class="stroked-checkbox--isolated"
+                            {{checked data.honored_god.favor_1}}
+                            />
+
+                        <input 
+                            type="checkbox"
+                            id="divine_favor_1"
+                            name="data.honored_god.favor_2"
+                            class="stroked-checkbox--isolated"
+                            {{checked data.honored_god.favor_2}}
+                            />
                     </div>
                 </div>
             </section>
@@ -88,8 +101,20 @@
                     <div class="divine__strength font-bold">{{divine.strength}}</div>
                     <div class="divine__name">{{divine.name}}</div>
                     <div class="divine__favours divine-favours">
-                        <input type="checkbox" id="{{divineHandle}}.divine_favor_1" name="{{divineHandle}}.divine_favor_1" class="stroked-checkbox--isolated" />
-                        <input type="checkbox" id="{{divineHandle}}.divine_favor_2" name="{{divineHandle}}.divine_favor_2" class="stroked-checkbox--isolated" />
+                        <input 
+                            type="checkbox"
+                            id="{{divineHandle}}.favor_1"
+                            name="data.divines.{{divineHandle}}.favor_1"
+                            class="stroked-checkbox--isolated"
+                            {{checked divine.favor_1}}
+                            />
+                        <input 
+                            type="checkbox"
+                            id="{{divineHandle}}.favor_2"
+                            name="data.divines.{{divineHandle}}.favor_2"
+                            class="stroked-checkbox--isolated"
+                            {{checked divine.favor_2}}
+                            />
                     </div>
                 </div>
             {{/each}}
@@ -107,55 +132,66 @@
     <div class="flex flex-row">
         <section class="pathos sheet-section">
             <h1>Pathos</h1>
-            <div class="flex flex-row items-center -ml-2">
-                <div class="pathos-line">
+            <div class="flex flex-row items-start -ml-2">
+                <div class="pathos-line pathos-line--highlighted">
+                    <input
+                        id="pathos_0"
+                        type="radio"
+                        value="0"
+                        name="pathos"
+                        {{checked pathosChecked.[0]}}
+                    />
+                    <label for="pathos_0" class="text-sm">None</label>
+                </div>
+                <div class="pathos-line mt-2">
                     <input
                         type="radio"
                         value="1"
-                        name="pathos"
-                        class="m-0 static"
+                        name="data.pathos.value"
+                        {{checked pathosChecked.[1]}}
                     />
                 </div>
-                <div class="pathos-line">
+                <div class="pathos-line mt-2">
                     <input
                         type="radio"
                         value="2"
                         name="pathos"
-                        class="m-0 static"
+                        {{checked pathosChecked.[2]}}
                     />
                 </div>
-                <div class="pathos-line">
+                <div class="pathos-line mt-2">
                     <input
                         type="radio"
                         value="3"
                         name="pathos"
-                        class="m-0 static"
+                        {{checked pathosChecked.[3]}}
                     />
                 </div>
-                <div class="pathos-line">
+                <div class="pathos-line mt-2">
                     <input
                         type="radio"
                         value="4"
                         name="pathos"
-                        class="m-0 static"
+                        {{checked pathosChecked.[4]}}
                     />
                 </div>
-                <div class="pathos-line">
+                <div class="pathos-line mt-2">
                     <input
                         type="radio"
                         value="5"
                         name="pathos"
-                        class="m-0 static"
+                        {{checked pathosChecked.[5]}}
                     />
                 </div>
-                <div class="flex flex-col bg-gray-300 items-center p-1 pb-2 -ml-2 -mt-4">
-                    <label class="text-sm">Agony</label>
+                <div class="pathos-line pathos-line--highlighted">
                     <input
+                        id="pathos_6"
                         type="radio"
                         value="6"
                         name="pathos"
-                        class="m-0 static"
+                        {{checked pathosChecked.[6]}}
                     />
+                    <label for="pathos_6" class="text-sm">Agony</label>
                 </div>
             </div>
         </section>
@@ -320,6 +356,5 @@
             </div>
         </section>
     </div>
-    
 </form>
 
