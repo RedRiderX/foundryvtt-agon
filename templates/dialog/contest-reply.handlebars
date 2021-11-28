@@ -26,12 +26,12 @@
         <div class="flex flex-row flex-wrap">
             <div class="stroked-checkbox">
                 <input type="checkbox" id="epithet1" name="epithet1" />
-                <label for="epithet1">{{ data.data.epithet }}</label>
+                <label for="epithet1">{{ hero.data.epithet }}</label>
             </div>
-            {{#if data.data.epithet2 }}
+            {{#if hero.data.epithet2 }}
                 <div class="stroked-checkbox">
                     <input type="checkbox" id="epithet2" name="epithet2" />
-                    <label for="epithet2">{{ data.data.epithet2 }}</label>
+                    <label for="epithet2">{{ hero.data.epithet2 }}</label>
                 </div>
             {{/if}}
         </div>
@@ -72,55 +72,34 @@
         <h1>Divine Favor</h1>
         <h3>Invoke Divine Favor by calling on the strength of a god</h3>
         <div class="flex flex-row flex-wrap -ml-2 -mt-2">
-            <div class="domain bg-accent-200 mt-2 mr-2 text-sm">
-                <input
-                    type="radio"
-                    id="favor_zeus"
-                    name="favor"
-                    value="zeus"
-                    class="hidden"
-                />
-                <label for="favor_zeus" class="flex flex-col flex-1 p-2">
-                    <div class="font-bold">Authority</div>
-                    <div>Zeus</div>
-                </label>
-            </div>
-            <div class="domain bg-accent-200 mt-2 mr-2 text-sm">
-                <input
-                    type="radio"
-                    id="favor_aphrodite"
-                    name="favor"
-                    value="aphrodite"
-                    class="hidden"
-                />
-                <label for="favor_aphrodite" class="flex flex-col flex-1 p-2">
-                    <div class="font-bold">Beauty</div>
-                    <div>Aphrodite</div>
-                </label>
-            </div>
+            {{#each favors as |divine alias|}}
+                <div class="domain bg-accent-200 mt-2 mr-2 text-sm">
+                    <input
+                        type="radio"
+                        id="favor_{{alias}}"
+                        name="favor"
+                        value="{{alias}}"
+                        class="hidden"
+                    />
+                    <label for="favor_{{alias}}" class="flex flex-col flex-1 p-2">
+                        <div class="font-bold">{{ divine.strength }}</div>
+                        <div>{{ divine.name }}</div>
+                    </label>
+                </div>
+            {{/each}}
         </div>
     </section>
 
     <section class="sheet-section">
         <h1>Bonds</h1>
         <h3>Use a Bond and call for aid</h3>
-        <div class="radio-group">
-            <div>
-                <input
-                    type="radio"
-                    id="bond_none"
-                    name="bond"
-                    value=""
-                    checked
-                />
-                <label for="bond_none">None</label>
-            </div>
-            <div>
-                <input type="radio" id="bond1" name="bond" value="bond1" />
+        <div class="flex flex-row flex-wrap">
+            <div class="stroked-checkbox">
+                <input type="checkbox" id="bond1" name="bond" value="bond1" />
                 <label for="bond1">Zeus</label>
             </div>
-            <div>
-                <input type="radio" id="bond2" name="bond" value="bond2" />
+            <div class="stroked-checkbox">
+                <input type="checkbox" id="bond2" name="bond" value="bond2" />
                 <label for="bond2">Draos</label>
             </div>
         </div>
@@ -129,29 +108,19 @@
     <section class="sheet-section">
         <h1>Support</h1>
         <h3>Does another Hero Player support you?</h3>
-        <div class="radio-group">
-            <div>
+        <div class="flex flex-row flex-wrap">
+            <div class="stroked-checkbox">
                 <input
-                    type="radio"
-                    id="support_none"
-                    name="support"
-                    value=""
-                    checked
-                />
-                <label for="support_none">None</label>
-            </div>
-            <div>
-                <input
-                    type="radio"
+                    type="checkbox"
                     id="support1"
                     name="support"
                     value="support1"
                 />
                 <label for="support1">Helene</label>
             </div>
-            <div>
+            <div class="stroked-checkbox">
                 <input
-                    type="radio"
+                    type="checkbox"
                     id="support2"
                     name="support"
                     value="support1"

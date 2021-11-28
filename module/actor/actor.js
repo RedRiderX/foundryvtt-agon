@@ -74,6 +74,7 @@ export class agonActor extends Actor {
               target,
               domain,
               hero: game.user.character.data,
+              favors: game.user.character.favorsList,
               config: CONFIG.AGON,
             }
           ),
@@ -153,4 +154,31 @@ export class agonActor extends Actor {
     //   roll: JSON.stringify(Roll.create("1d4").toJSON()),
     // });
   }
+  
+  get favorsList() {
+    if (this.type !== 'hero_player') {
+      throw 'wrong actor type';
+      // return false;
+    }
+
+    var favors = {};
+    for (const [handle, divine] of Object.entries(this.data.data.divines)) { 
+      if (divine.favor_1 || divine.favor_2) {
+        favors[handle] = {
+          'name': divine.name,
+          'strength': divine.strength
+        }
+      }
+    }
+
+    let honored_god = this.data.data.honored_god;
+    if (honored_god.favor_1 || honored_god.favor_2) {
+      favors[honored_god.name.toLowerCase()] = {
+        'name': honored_god.name,
+        'strength': honored_god.strength
+      }
+    }
+    return favors;
+  }
+
 }
