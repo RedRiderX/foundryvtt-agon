@@ -19,10 +19,7 @@
                         value="{{data.epithet}}"
                         placeholder="Clever-Eyed"
                         style="margin-right: -2px;"/>
-                    {{> "systems/agon/templates/partials/die-dropdown.handlebars"
-                        name='data.epithet_die'
-                        value=data.epithet_die
-                        dieTypes=config.dieTypes}}
+                    {{> "systems/agon/templates/partials/die-dropdown.handlebars" name='data.epithet_die' value=data.epithet_die dieTypes=config.dieTypes}}
                 </div>
                 <div class="epithet bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2 hidden">
                     <label for="data.epithet2" class="cut-corners--left flex-none w-28 px-3 py-2 leading-none self-center">Epithet</label>
@@ -35,9 +32,9 @@
                 <div class="name bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2">
                     <label for="name" class="cut-corners--left flex-none w-28  px-3 py-2 leading-none self-center">Name</label>
                     <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name"
-                        style="margin-right: -2px;"/>
+                        class="-mr-0.5"/>
                     <input type="text" name="data.pronouns" value="{{data.pronouns}}" placeholder="They/Them"
-                        style="margin-right: -2px;"/>
+                        class="-mr-0.5"/>
                     {{> "systems/agon/templates/partials/die-dropdown.handlebars"
                         name='data.name_die'
                         value=data.name_die
@@ -46,11 +43,16 @@
                 <div class="lineage bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2">
                     <label for="data.lineage" class="cut-corners--left flex-none w-28 px-3 py-2 leading-none self-center">Lineage</label>
                     <input type="text" name="data.lineage" value="{{data.lineage}}" placeholder="Scion of" class="w-40"/>
+                    <div class="lineage__line absolute h-0.5 w-4 bg-black top-1/2 -right-4" style="top: calc(50% - 1px);"></div>
                 </div>
                 <div class="honored-god bg-accent-200 flex flex-row items-stretch relative">
                     <label for="data.honored_god.name" class="cut-corners--left flex-none w-28 px-3 py-2 leading-none self-center">Honored God</label>
-                    <input type="text" name="data.honored_god.name" value="{{data.honored_god.name}}" placeholder="Zeus"
-                        style="margin-right: -2px;"/>
+                    <input 
+                        type="text" 
+                        name="data.honored_god.name" 
+                        value="{{data.honored_god.name}}"
+                        placeholder="Zeus"
+                        class="-mr-0.5"/>
                     <input type="text" name="data.honored_god.strength" value="{{data.honored_god.strength}}" placeholder="Authority" class="w-32"/>
                     <div class="divine-favours ">
                         <input 
@@ -289,27 +291,29 @@
     <div class="flex flex-row">
         <section class="boons sheet-section">
             <h1>Boons</h1>
-            <div class="flex flex-row flex-wrap">
+            <div class="flex flex-col flex-wrap h-60 -my-2">
                 {{#each data.boons as |boonStatus boon|}}
-                <div class="boon w-1/2">
-                    <input type="checkbox" id="boon_{{boon}}" name="boon_{{boon}}" {{checked boonStatus}}/>
-                    <label class="boon__name" for="{{boon}}">{{boon}}</label>
+                <div class="boon w-1/2 my-1 styled-checkbox">
+                    <input type="checkbox" id="boon_{{boon}}" name="data.boons.{{boon}}" {{checked boonStatus}}/>
+                    <label class="boon__name normal-case" for="boon_{{boon}}">{{localize (concat "AGON." boon)}}</label>
                 </div>
                 {{/each}}
             </div>
         </section>
         
-        <section class="virtues sheet-section">
+        <section class="virtues sheet-section w-32">
             <h1>Virtues</h1>
-            <div class="flex-row">
+            <div class="flex flex-col justify-between">
                 {{#each data.virtues as |virtueAmount virtue|}}
-                    <div class="virtue flex flex-row flex-1">
+                    <div class="virtue flex flex-row my-2 items-center flex-none w-28">
                         <label
+                            class="block w-full mr-2"
                             for="data.virtues.{{virtue}}">{{virtue}}</label>
                         <input
                             name="data.virtues.{{virtue}}"
                             type="number"
-                            value="{{virtueAmount}}"/>
+                            min="0"
+                            value="{{virtueAmount}}" />
                     </div>
                 {{/each}}
             </div>

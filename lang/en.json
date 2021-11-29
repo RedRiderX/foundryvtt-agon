@@ -8,5 +8,14 @@
   "AGON.arts-oration": "Arts & Oration",
   "AGON.blood-valor": "Blood & Valor",
   "AGON.craft-reason": "Craft & Reason",
-  "AGON.resolve-spirit": "Resolve & Spirit"
+  "AGON.resolve-spirit": "Resolve & Spirit",
+
+  "AGON.domain-d10-advance": "Advance a d8 Domain die to d10",
+  "AGON.domain-d8-advance-1": "Advance a d6 Domain die to d8",
+  "AGON.domain-d8-advance-2": "Advance a d6 Domain die to d8",
+  "AGON.epithet-d8-advance": "Advance your Epithet die to d8",
+  "AGON.2nd-epithet": "Add another Epithet",
+  "AGON.bolster-bonus": "When you support or bolster, the die you give counts as one size larger.",
+  "AGON.pathos-bonus": "When you mark Pathos for an extra Domain, take two extra dice instead of one.",
+  "AGON.favor-bonus": "When you spend Divine Favor, roll +2d4 and keep the highest."
 }
