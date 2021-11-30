@@ -87,7 +87,7 @@ input[type="time"] {
   }
 
   & div {
-    @apply m-0.5
+    @apply m-0.5;
   }
 
   & label {
@@ -222,7 +222,7 @@ input[type="time"] {
   }
 
   &:after {
-    @apply absolute hidden bg-black transform -rotate-45 h-0.5 w-0.5 w-5;
+    @apply absolute hidden bg-black transform -rotate-45 w-5 h-0.5 left-0.5;
     content: "";
     top: calc(50% - 1px);
   }
@@ -246,11 +246,11 @@ input[type="radio"].static {
     @apply relative pl-7 text-base pr-4 block;
 
     &:before {
-      @apply absolute border-black border-2 bg-white transform left-0;
+      @apply absolute border-black border-2 bg-white;
       content: "";
       width: 0.6rem;
       height: 0.6rem;
-      top: calc(50% - 8px);
+      top: calc(50% - 0.3rem);
       left: 5px;
     }
 
@@ -271,6 +271,31 @@ input[type="radio"].static {
   } */
 }
 
+.styled-checkbox--isolated[type="checkbox"] {
+  @apply appearance-none relative m-0 w-5 h-5;
+
+  &:before {
+    @apply absolute border-black border-2 bg-white;
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    top: calc(50% - 6px);
+    left: calc(50% - 6px);
+  }
+
+  /* &:after {
+    @apply absolute hidden bg-black transform -rotate-45 h-0.5 w-0.5 w-5;
+    content: "";
+    top: calc(50% - 1px);
+  } */
+
+  &:checked:before {
+    box-shadow: 0 0 0 2px black;
+    background: black;
+    border-color: white;
+  }
+}
+
 .virtue {
   & input {
     @apply w-12;
@@ -280,9 +305,29 @@ input[type="radio"].static {
 /* .boon {
 } */
 .boon .boon__name:before {
-  top: .4rem;
+  top: 0.4rem;
 }
 
 .fate-line {
   @apply styled-checkbox;
+}
+
+.bond {
+  @apply -mt-0.5;
+
+  & input.bond__name {
+    @apply border-l-0 border-r-0;
+  }
+
+  & input.bond__strength {
+    @apply w-10;
+  }
+}
+
+.trophy {
+  @apply -mt-0.5;
+
+  & .trophy__name {
+    @apply ml-2;
+  }
 }

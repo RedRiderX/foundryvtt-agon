@@ -305,7 +305,7 @@
             <h1>Virtues</h1>
             <div class="flex flex-col justify-between">
                 {{#each data.virtues as |virtueAmount virtue|}}
-                    <div class="virtue flex flex-row my-2 items-center flex-none w-28">
+                    <div class="virtue flex flex-row my-1 items-center flex-none w-28">
                         <label
                             class="block w-full mr-2"
                             for="data.virtues.{{virtue}}">{{virtue}}</label>
@@ -320,41 +320,44 @@
         </section>
     </div>
     <div class="flex flex-row">
-        <section class="bonds sheet-section">
+        <section class="bonds sheet-section w-1/2 ">
             <h1>Bonds</h1>
-            <div class="flex-column">
+            <div class="flex-column -ml-2 mr-4 cut-corners--nested ">
                 {{#each data.bonds as |bond bondKey|}}
                     <div class="bond flex flex-row">
                         <input
                             name="data.bonds.{{bondKey}}.name"
                             type="text"
                             value="{{bond.name}}"
-                            class="bond__name flex-grow"/>
+                            class="bond__name"/>
                         <input
                             name="data.bonds.{{bondKey}}.strength"
-                            type="text"
+                            type="number"
                             value="{{bond.strength}}"
                             class="bond__strength"
                             placeholder="0"
+                            min='0'
                             data-dtype="Number"/>
                     </div>
                 {{/each}}
             </div>
         </section>
-        <section class="trophies sheet-section">
+        <section class="trophies sheet-section w-1/2">
             <h1>Great Deeds & Trophies</h1>
-            <div class="flex-column">
+            <div class="flex-column cut-corners--nested">
                 {{#each data.trophies as |trophy trophyKey|}}
-                    <div class="bond flex flex-row">
+                    <div class="trophy flex flex-row items-center">
                         <input
                             type="checkbox"
+                            id="data.trophies.{{trophyKey}}.spent"
                             name="data.trophies.{{trophyKey}}.spent"
+                            class="styled-checkbox--isolated"
                             {{checked trophy.spent}} />
                         <input
                             name="data.trophies.{{trophyKey}}.name"
                             type="text"
                             value="{{trophy.name}}"
-                            class="trophy__name flex-grow"/>
+                            class="trophy__name"/>
                     </div>
                 {{/each}}
             </div>
