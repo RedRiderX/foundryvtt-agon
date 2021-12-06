@@ -21,14 +21,16 @@
                         style="margin-right: -2px;"/>
                     {{> "systems/agon/templates/partials/die-dropdown.handlebars" name='data.epithet_die' value=data.epithet_die dieTypes=config.dieTypes}}
                 </div>
-                <div class="epithet bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2 hidden">
-                    <label for="data.epithet2" class="cut-corners--left flex-none w-28 px-3 py-2 leading-none self-center">Epithet</label>
-                    <input
-                        type="text"
-                        name="data.epithet2"
-                        value="{{data.epithet2}}"
-                        placeholder="Clever-Eyed"/>
-                </div>
+                {{#if data.boons.2nd-epithet }}
+                    <div class="epithet bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2">
+                        <label for="data.epithet2" class="cut-corners--left flex-none w-28 px-3 py-2 leading-none self-center">Epithet</label>
+                        <input
+                            type="text"
+                            name="data.epithet2"
+                            value="{{data.epithet2}}"
+                            placeholder="Clever-Eyed"/>
+                    </div>
+                {{/if}}
                 <div class="name bg-accent-200 cut-corners--nested flex flex-row items-stretch mb-2">
                     <label for="name" class="cut-corners--left flex-none w-28  px-3 py-2 leading-none self-center">Name</label>
                     <input type="text" name="name" value="{{actor.name}}" placeholder="Hero Name"
@@ -336,14 +338,14 @@
             <h1>Bonds</h1>
             <div class="flex-column -ml-2 mr-4 cut-corners--nested ">
                 {{#each data.bonds as |bond bondKey|}}
-                    <div class="bond flex flex-row">
+                    <div class="bond flex flex-row" data-id="{{bondKey}}">
                         <input
-                            name="data.bonds.{{bondKey}}.name"
+                            data-property="name"
                             type="text"
                             value="{{bond.name}}"
                             class="bond__name"/>
                         <input
-                            name="data.bonds.{{bondKey}}.strength"
+                            data-property="strength"
                             type="number"
                             value="{{bond.strength}}"
                             class="bond__strength"
@@ -358,15 +360,15 @@
             <h1>Great Deeds & Trophies</h1>
             <div class="flex-column cut-corners--nested">
                 {{#each data.trophies as |trophy trophyKey|}}
-                    <div class="trophy flex flex-row items-center">
+                    <div class="trophy flex flex-row items-center" data-id="{{trophyKey}}">
                         <input
                             type="checkbox"
-                            id="data.trophies.{{trophyKey}}.spent"
-                            name="data.trophies.{{trophyKey}}.spent"
+                            data-dtype="Boolean"
+                            data-property="spent"
                             class="styled-checkbox--isolated"
                             {{checked trophy.spent}} />
                         <input
-                            name="data.trophies.{{trophyKey}}.name"
+                            data-property="name"
                             type="text"
                             value="{{trophy.name}}"
                             class="trophy__name"/>
