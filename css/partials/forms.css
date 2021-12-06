@@ -139,6 +139,12 @@ input[type="time"] {
     content: "";
     top: calc(50% - 1px);
   }
+
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
 }
 
 .pathos-line--highlighted {
@@ -153,7 +159,7 @@ input[type="time"] {
   @apply relative mx-2;
 
   &:after {
-    @apply bg-gray-500 absolute -right-4 w-4 h-0.5;
+    @apply bg-gray-500 absolute -right-6 w-7 h-0.5;
     content: "";
     top: calc(50% - 1px);
   }
@@ -161,16 +167,29 @@ input[type="time"] {
   &:last-child:after {
     content: none;
   }
+
+  & input[type="checkbox"] {
+    @apply styled-checkbox--isolated;
+
+    &:before {
+      top: calc(50% - 6px);
+      left: calc(50% - 7px);
+    }
+  }
 }
 
 .fate-line--marked {
-  &:before {
+  & [type="checkbox"]:after {
     @apply absolute bg-black rounded-full;
     content: "";
     height: 4px;
     width: 4px;
-    top: calc(50% - 3px);
-    right: calc(50% - 2px);
+    top: calc(50% - 2px);
+    right: calc(50% - 3px);
+  }
+  
+  & [type="checkbox"]:checked:after {
+    @apply bg-white;
   }
 }
 
@@ -250,7 +269,7 @@ input[type="radio"].static {
       content: "";
       width: 0.6rem;
       height: 0.6rem;
-      top: calc(50% - 0.3rem);
+      top: calc(50% - 0.5rem);
       left: 5px;
     }
 
@@ -272,7 +291,7 @@ input[type="radio"].static {
 }
 
 .styled-checkbox--isolated[type="checkbox"] {
-  @apply appearance-none relative m-0 w-5 h-5;
+  @apply appearance-none relative m-0 w-5 h-5 block;
 
   &:before {
     @apply absolute border-black border-2 bg-white;
@@ -306,10 +325,6 @@ input[type="radio"].static {
 } */
 .boon .boon__name:before {
   top: 0.4rem;
-}
-
-.fate-line {
-  @apply styled-checkbox;
 }
 
 .bond {
