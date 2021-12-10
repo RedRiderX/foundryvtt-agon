@@ -4,6 +4,28 @@
   border: 0 solid;
 }
 
+/* ----------------------------------------- */
+/* Scrollbar
+/* ----------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-none shadow-none;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 border-white border-solid rounded-none;
+}
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: theme("colors.gray.700") theme("colors.gray.100");
+}
+
+a:hover {
+  text-shadow: 0 0 10px theme('colors.accent.500');
+}
+
 .agon {
   @apply font-sans;
 
@@ -14,6 +36,10 @@
 
 body {
   background-image: url("../assets/agon-bg.webp");
+}
+
+#players ol .player-name.self {
+  @apply text-black font-bold;
 }
 
 .app,
@@ -33,6 +59,27 @@ body {
   } */
 }
 
+#sidebar-tabs {
+  @apply shadow-none bg-accent-300 border-b-2 mb-0 border-black;
+
+  & > .item {
+    border-radius: 0;
+  }
+
+  & > .item.active {
+    /* color: #FFF; */
+    @apply border-0 shadow-none bg-accent-400;
+    box-shadow: inset 0 -2px black;
+  }
+
+  & > .collapse {
+    color: black;
+  }
+}
+
+.tabs .item.active {
+  text-shadow: none;
+}
 
 .window-app {
   & .window-header {
@@ -42,6 +89,10 @@ body {
   & .window-content {
     @apply bg-white;
     background-image: none;
+  }
+
+  & .window-resizable-handle {
+    @apply bottom-0 bg-gray-700 text-white border-white rounded-none leading-none;
   }
 }
 
@@ -58,33 +109,4 @@ body {
   width: 100px;
   height: 28.66666666666667px;
   top: 15px;
-}
-
-.primary-cta {
-    @apply 
-        uppercase 
-        border-2 border-black bg-accent-300 text-black 
-        text-lg
-        py-2
-        px-4
-        rounded-none
-        font-sans;
-    box-shadow: inset 0 0 0 5px white, inset 0 0 0 7px black;
-
-    &:hover {
-        box-shadow: inset 0 0 0 5px theme('backgroundColor.accent.300'), inset 0 0 0 7px black;
-    }
-}
-
-.chat-cta--transparent {
-    @apply uppercase text-sm font-sans rounded-none bg-transparent text-white border-2 border-white;
-    line-height: 3;
-    
-    &:hover {
-        box-shadow: inset 0 0 0 5px black, inset 0 0 0 7px white;
-    }
-}
-
-.dialog .dialog-buttons button {
-    @apply primary-cta;
 }

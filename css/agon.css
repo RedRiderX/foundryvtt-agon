@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;500;700&display=swap");
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
+@import "partials/tailwind.css";
 @import "partials/base.css";
+@import "partials/buttons.css";
 @import "partials/components.css";
 @import "partials/chat.css";
 @import "partials/forms.css";
+  

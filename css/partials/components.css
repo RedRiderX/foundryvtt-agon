@@ -75,10 +75,18 @@
 }
 
 .cut-corners--left {
+  
+  &:before,
+  &:after {
+    content: '';
+  }
+}
+
+.cut-corners--left {
+
   &:before,
   &:after {
     @apply absolute left-0 w-1 h-1 bg-white pointer-events-none;
-    content: "";
   }
 
   &:before {

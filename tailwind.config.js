@@ -1,9 +1,8 @@
 module.exports = {
-  purge: [
-    './module/**.js',
-    './templates/**.handlebars',
+  content: [
+    './module/**/*.js',
+    './templates/**/*.handlebars',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
       sans: ['Jost', 'sans-serif']
@@ -17,11 +16,6 @@ module.exports = {
           500: '#007D84'
         }
       }
-    },
-  },
-  variants: {
-    extend: {
-      margin: ['last']
     },
   },
   corePlugins: {
