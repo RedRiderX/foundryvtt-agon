@@ -11,3 +11,6 @@ have whispers to each hero with prompts to Recite Deeds
 game.messages.filter(message => message.getFlag('agon', 'relatedContest') === <id> )
 game.messages.get(<id>)
 message.setFlag('agon', 'relatedContest', <id>)
+
+---
+Bug: boons don't trigger properly when multiple hero sheets open

@@ -1,13 +1,21 @@
 <form class="{{cssClass}} container uppercase" autocomplete="off">
     <div class="flex flex-row">
-        {{!-- Sheet Header --}}
         <div class="mb-4">
             <header class="sheet-header flex flex-row mb-4">
                 <img src="systems/agon/assets/agon-logo.svg" alt="AGON" class="logo">
                 <img class="profile-img h-auto w-14 bg-gray-400 border-2 border-gray-700 rounded-full" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
                 <section class="glory sheet-section">
-                    <h1>glory (d10)</h1>
-                    <meter min="0" low="10" optimum="50" high="90" max="100" value="70" class="w-full"></meter>
+                    <div class="flex flex-row items-center">
+                        <h1>Glory ({{gloryMilestone.die}})</h1>
+                        <input 
+                            class="glory-value"
+                            type="number"
+                            name="data.glory.value"
+                            min="0"
+                            value="{{data.glory.value}}"
+                            max="240">
+                    </div>
+                    <meter min="{{gloryMilestone.min}}" max="{{gloryMilestone.max}}" value="{{data.glory.value}}" class="w-full"></meter>
                 </section>
             </header>
             <section class="names text-lg">
@@ -140,6 +148,7 @@
                 <div class="pathos-line pathos-line--highlighted">
                     <input
                         id="pathos_0"
+                        class="styled-radio--isolated"
                         type="radio"
                         value="0"
                         name="data.pathos.value"
@@ -149,6 +158,7 @@
                 </div>
                 <div class="pathos-line mt-2">
                     <input
+                        class="styled-radio--isolated"
                         type="radio"
                         value="1"
                         name="data.pathos.value"
@@ -157,6 +167,7 @@
                 </div>
                 <div class="pathos-line mt-2">
                     <input
+                        class="styled-radio--isolated"
                         type="radio"
                         value="2"
                         name="data.pathos.value"
@@ -165,6 +176,7 @@
                 </div>
                 <div class="pathos-line mt-2">
                     <input
+                        class="styled-radio--isolated"
                         type="radio"
                         value="3"
                         name="data.pathos.value"
@@ -173,6 +185,7 @@
                 </div>
                 <div class="pathos-line mt-2">
                     <input
+                        class="styled-radio--isolated"
                         type="radio"
                         value="4"
                         name="data.pathos.value"
@@ -181,6 +194,7 @@
                 </div>
                 <div class="pathos-line mt-2">
                     <input
+                        class="styled-radio--isolated"
                         type="radio"
                         value="5"
                         name="data.pathos.value"
@@ -190,6 +204,7 @@
                 <div class="pathos-line pathos-line--highlighted">
                     <input
                         id="pathos_6"
+                        class="styled-radio--isolated"
                         type="radio"
                         value="6"
                         name="data.pathos.value"

@@ -14,12 +14,96 @@ export class agonStrifeSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+  starsLayout = {
+    zeus: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    aphrodite: {
+      one: { top: 19.8, left: 7.5 },
+      two: {
+        top: 26.5,
+        left: 7.5,
+      },
+      three: {
+        top: 33.4,
+        left: 7.5,
+      },
+    },
+    demeter: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    hera: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    hermes: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    ares: {
+      one: { top: 7.5, left: 28.5 },
+      two: { top: 12.3, left: 24.2 },
+      three: { top: 16.9, left: 20.1 },
+    },
+    poseidon: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    hephaistos: {
+      one: { top: 1, left: 1 },
+      two: { top: 12.3, left: 24.2 },
+      three: { top: 20, left: 20 },
+    },
+    hekate: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    apollo: {
+      one: { top: 47.5, left: 1.8 },
+      two: { top: 47.5, left: 7.4 },
+      three: { top: 47.5, left: 13.1 },
+    },
+    artemis: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+    athena: {
+      one: { top: 1, left: 1 },
+      two: { top: 10, left: 10 },
+      three: { top: 20, left: 20 },
+    },
+  };
 
   /** @override */
   getData() {
-    const data = super.getData();
-    data.config = CONFIG.AGON;
-    return data;
+    const sheetData = super.getData();
+    const actorData = sheetData.actor.data;
+    sheetData.config = CONFIG.AGON;
+
+    sheetData.starsLayout = {};
+    Object.keys(actorData.data.vault.stars).forEach((godKey) => {
+      if (sheetData.starsLayout[godKey] == null)
+        sheetData.starsLayout[godKey] = {};
+
+      Object.keys(actorData.data.vault.stars[godKey]).forEach((starIndex) => {
+        sheetData.starsLayout[godKey][starIndex] = {
+          top: this.starsLayout[godKey][starIndex].top,
+          left: this.starsLayout[godKey][starIndex].left,
+          checked: actorData.data.vault.stars[godKey][starIndex],
+        };
+      });
+    });
+
+    return sheetData;
   }
 
   /** @override */
@@ -30,11 +114,11 @@ export class agonStrifeSheet extends ActorSheet {
     if (!this.options.editable) return;
 
     html
-      .on(
-        "click",
-        ".vault-of-heaven .favor-toggle",
-        this._onFavorToggle.bind(this)
-      )
+      // .on(
+      //   "click",
+      //   ".vault-of-heaven .favor-toggle",
+      //   this._onFavorToggle.bind(this)
+      // )
       .on("click", ".create-contest", function (e) {
         e.preventDefault();
         that.constructor.createContest();
@@ -158,16 +242,16 @@ export class agonStrifeSheet extends ActorSheet {
           messageId: strifeRoll.id,
         }
       ),
-      whisper: [game.userId]
+      whisper: [game.userId],
     });
   }
 
-  /**
-   * Handle Favor point clicks
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onFavorToggle(event) {
-    //
-  }
+  // /**
+  //  * Handle Favor point clicks
+  //  * @param {Event} event   The originating click event
+  //  * @private
+  //  */
+  // _onFavorToggle(event) {
+  //   //
+  // }
 }

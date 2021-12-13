@@ -1,7 +1,22 @@
 <form class="{{cssClass}} flexcol uppercase" autocomplete="off">
     <section class="vault-of-heaven sheet-section">
       <h1 class="text-lg">The Vault of Heaven</h1>
-      <div class="-ml-2">{{> "systems/agon/assets/vault-of-heaven.svg.handlebars" }}</div>
+      <div class="-ml-2 relative">
+        {{> "systems/agon/assets/vault-of-heaven.svg.handlebars" }}
+        {{#each starsLayout as | god godKey |}}
+            {{#each god as | star starKey |}}
+              <div class="checkbox-wrapper absolute" style="top: {{star.top}}%; left: {{star.left}}%;">
+                <input 
+                  type="checkbox"
+                  name="data.vault.stars.{{godKey}}.{{starKey}}"
+                  class="stroked-checkbox--isolated"
+                  {{checked star.checked}}
+                  />
+              </div>
+            {{/each}}
+        {{/each}}
+      </div>
+      
     </section>
     <div class="flex flex-flow">
       <button class="create-contest primary-cta">Propose Contest</button>

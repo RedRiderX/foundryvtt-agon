@@ -1,31 +1,44 @@
 #chat-log {
-    @apply divide-y-2 divide-black;
+  @apply divide-y-2 divide-black px-1 mb-2;
 }
 
 #chat-form textarea {
-    @apply bg-white rounded-none border-black border-2;
-    background-image: none;
+  @apply bg-white rounded-none border-black border-2;
+  background-image: none;
 }
 
 .chat-message {
-    @apply border-0 p-0 my-2 mx-0;
+  @apply border-0 p-0 my-2 mx-0;
 
-    & .message-header {
-        @apply p-1;
-    }
+  & .message-header {
+    @apply p-1;
+  }
 }
 
 .strife-roll,
 .fortune-test {
-    @apply bg-black text-white p-4 border-l-2 border-white;
-    background-image: url('../assets/contest-background.webp');
-    background-size: cover;
-    background-position: -50% bottom;
+  @apply bg-black text-white p-4 border-l-2 border-white;
+  background-image: url("../assets/contest-background.webp");
+  background-size: cover;
+  background-position: -50% bottom;
 }
 
 .fortune-test {
-    /* background-image: url('../assets/fortune-background.webp');
+  /* background-image: url('../assets/fortune-background.webp');
     background-size: cover;
     background-position: -50% bottom; */
-    background-size: auto;
+  background-size: auto;
+}
+
+#chat-controls {
+  @apply items-center mb-1;
+}
+
+#chat-message,
+#chat-controls .roll-type-select {
+  @apply h-auto 
+    border-2 border-black rounded-none 
+    py-1 px-2 
+    bg-gray-100 placeholder-gray-400 text-black 
+    focus:outline focus:outline-2 focus:outline-black focus:shadow-none;
 }

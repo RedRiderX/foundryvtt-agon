@@ -17,8 +17,8 @@
       },
       "bonds": [
         {
-          "name": "Zeus",
-          "strength": 1
+          "name": "",
+          "strength": 0
         },
         {
           "name": "",
@@ -120,11 +120,15 @@
         "min": 0,
         "max": 12
       },
-      "glory": 0,
+      "glory": {
+        "value": 0,
+        "min": 0,
+        "max": 240
+      },
       "trophies": [
         {
-          "name": "A cool monster head",
-          "spent": true
+          "name": "",
+          "spent": false
         },
         {
           "name": "",
@@ -154,8 +158,34 @@
     },
     "strife_player": {
       "vault": {
-        "stars": {},
-        "wrath": {}
+        "stars": {
+          "zeus": { "one": false, "two": false, "three": false },
+          "aphrodite": { "one": false, "two": false, "three": false },
+          "demeter": { "one": false, "two": false, "three": false },
+          "hera": { "one": false, "two": false, "three": false },
+          "hermes": { "one": false, "two": false, "three": false },
+          "ares": { "one": false, "two": false, "three": false },
+          "poseidon": { "one": false, "two": false, "three": false },
+          "hephaistos": { "one": false, "two": false, "three": false },
+          "hekate": { "one": false, "two": false, "three": false },
+          "apollo": { "one": false, "two": false, "three": false },
+          "artemis": { "one": false, "two": false, "three": false },
+          "athena": { "one": false, "two": false, "three": false }
+        },
+        "wrath": {
+          "zeus": { "one": false, "two": false, "three": false },
+          "aphrodite": { "one": false, "two": false, "three": false },
+          "demeter": { "one": false, "two": false, "three": false },
+          "hera": { "one": false, "two": false, "three": false },
+          "hermes": { "one": false, "two": false, "three": false },
+          "ares": { "one": false, "two": false, "three": false },
+          "poseidon": { "one": false, "two": false, "three": false },
+          "hephaistos": { "one": false, "two": false, "three": false },
+          "hekate": { "one": false, "two": false, "three": false },
+          "apollo": { "one": false, "two": false, "three": false },
+          "artemis": { "one": false, "two": false, "three": false },
+          "athena": { "one": false, "two": false, "three": false }
+        }
       },
       "strifeLevel": 0,
       "advantages": "",

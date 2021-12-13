@@ -3,9 +3,19 @@
   & input[type="number"],
   & input[type="password"],
   & input[type="date"],
-  & input[type="time"] {
-    @apply h-auto border-2 border-black rounded-none py-1 px-2 bg-gray-100 placeholder-gray-400 text-black;
+  & input[type="time"],
+  & textarea,
+  & select {
+    @apply h-auto 
+      border-2 border-black rounded-none 
+      py-1 px-2 
+      bg-gray-100 placeholder-gray-400 text-black 
+      focus:outline focus:outline-2 focus:outline-black focus:shadow-none;
   }
+}
+
+form .form-group .form-fields button {
+  font-size: 0.9rem;
 }
 
 /* Restate form classes because of override ugh */
@@ -25,8 +35,8 @@ input[type="time"] {
   align-items: center;
 
   & select {
+    @apply p-0 pr-4 h-full border-none bg-transparent;
     grid-area: select;
-    @apply pr-4;
   }
 
   &::after {
@@ -53,6 +63,10 @@ input[type="time"] {
       box-shadow: inset 2px 0px black;
     }
   }
+}
+
+input.glory-value {
+  @apply w-12;
 }
 
 .radio-row {
@@ -187,7 +201,7 @@ input[type="time"] {
     top: calc(50% - 2px);
     right: calc(50% - 3px);
   }
-  
+
   & [type="checkbox"]:checked:after {
     @apply bg-white;
   }
@@ -233,6 +247,19 @@ input[type="time"] {
 
   &:before {
     @apply absolute border-black border-2 bg-white transform rotate-45 left-0;
+  }
+
+  &:after {
+    @apply absolute hidden bg-black transform -rotate-45 w-5 h-0.5 left-0.5;
+  }
+
+  &:checked:after {
+    @apply block;
+  }
+}
+
+.stroked-checkbox--isolated[type="checkbox"] {
+  &:before {
     content: "";
     width: 0.6rem;
     height: 0.6rem;
@@ -241,13 +268,8 @@ input[type="time"] {
   }
 
   &:after {
-    @apply absolute hidden bg-black transform -rotate-45 w-5 h-0.5 left-0.5;
     content: "";
     top: calc(50% - 1px);
-  }
-
-  &:checked:after {
-    @apply block;
   }
 }
 
@@ -266,18 +288,18 @@ input[type="radio"].static {
 
     &:before {
       @apply absolute border-black border-2 bg-white;
+    }
+  }
+}
+.styled-checkbox {
+  & label {
+    &:before {
       content: "";
       width: 0.6rem;
       height: 0.6rem;
       top: calc(50% - 0.5rem);
       left: 5px;
     }
-
-    /* &:after {
-      @apply absolute hidden bg-black transform -rotate-45 w-5 h-0.5 left-0.5;
-      content: "";
-      top: calc(50% - 1px);
-    } */
   }
 
   & :checked + label:before {
@@ -285,9 +307,6 @@ input[type="radio"].static {
     background: black;
     border-color: white;
   }
-  /* & :checked + label:after {
-    @apply block;
-  } */
 }
 
 .styled-checkbox--isolated[type="checkbox"] {
@@ -295,6 +314,10 @@ input[type="radio"].static {
 
   &:before {
     @apply absolute border-black border-2 bg-white;
+  }
+}
+.styled-checkbox--isolated[type="checkbox"] {
+  &:before {
     content: "";
     width: 0.6rem;
     height: 0.6rem;
@@ -302,13 +325,21 @@ input[type="radio"].static {
     left: calc(50% - 6px);
   }
 
-  /* &:after {
-    @apply absolute hidden bg-black transform -rotate-45 h-0.5 w-0.5 w-5;
-    content: "";
-    top: calc(50% - 1px);
-  } */
-
   &:checked:before {
+    box-shadow: 0 0 0 2px black;
+    background: black;
+    border-color: white;
+  }
+}
+
+.styled-radio--isolated[type="radio"] {
+  @apply appearance-none 
+    relative top-0
+    m-0 w-4 h-4 block 
+    border-black border-2 bg-white 
+    rounded-full;
+
+  &:checked {
     box-shadow: 0 0 0 2px black;
     background: black;
     border-color: white;

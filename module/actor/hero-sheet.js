@@ -44,11 +44,49 @@ export class agonHeroSheet extends ActorSheet {
       sheetData.fateChecked[index] = actorData.data.fate.value >= index;
     }
 
-    if (actorData.data.bonds[actorData.data.bonds.length-1].name !== "") {
+    if (actorData.data.bonds[actorData.data.bonds.length - 1].name !== "") {
       actorData.data.bonds.push({ name: "", strength: 0 });
     }
-    if (actorData.data.trophies[actorData.data.trophies.length-1].name !== "") {
+    if (
+      actorData.data.trophies[actorData.data.trophies.length - 1].name !== ""
+    ) {
       actorData.data.trophies.push({ name: "", strength: 0 });
+    }
+
+    // 0 d6
+    // 80 d8
+    // 120 d10
+    // 240 d12
+    if (actorData.data.glory.value < 80) {
+      sheetData.gloryMilestone = {
+        die: "d6",
+        min: 0,
+        max: 80,
+      };
+    } else if (
+      actorData.data.glory.value >= 80 &&
+      actorData.data.glory.value < 120
+    ) {
+      sheetData.gloryMilestone = {
+        die: "d8",
+        min: 80,
+        max: 120,
+      };
+    } else if (
+      actorData.data.glory.value >= 120 &&
+      actorData.data.glory.value < 240
+    ) {
+      sheetData.gloryMilestone = {
+        die: "d10",
+        min: 120,
+        max: 240,
+      };
+    } else if (actorData.data.glory.value > 240) {
+      sheetData.gloryMilestone = {
+        die: "d12",
+        min: 0,
+        max: 240,
+      };
     }
 
     return sheetData;
@@ -57,23 +95,12 @@ export class agonHeroSheet extends ActorSheet {
   /** @override */
   activateListeners(html) {
     super.activateListeners(html);
+    if (!this.isEditable) return;
 
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-
-    html.on(
-      "click",
-      ".fate-line [type='checkbox']",
-      this._updateFate.bind(this)
-    ).on(
-      "change",
-      ".bond input",
-      this._onBondChange.bind(this)
-    ).on(
-      "change",
-      ".trophy input",
-      this._onTrophyChange.bind(this)
-    );
+    html
+      .on("click", ".fate-line [type='checkbox']", this._updateFate.bind(this))
+      .on("change", ".bond input", this._onBondChange.bind(this))
+      .on("change", ".trophy input", this._onTrophyChange.bind(this));
   }
 
   async _updateFate(e) {
@@ -93,7 +120,7 @@ export class agonHeroSheet extends ActorSheet {
    * @returns {Promise<Actor5e>|null}  Actor after update if any changes were made.
    * @private
    */
-   _onBondChange(e) {
+  _onBondChange(e) {
     e.preventDefault();
     const target = e.currentTarget;
     const row = target.closest(".bond");
@@ -112,16 +139,16 @@ export class agonHeroSheet extends ActorSheet {
     bond[key] = value;
 
     // Perform the Actor update
-    return this.actor.update({'data.bonds': bonds});
+    return this.actor.update({ "data.bonds": bonds });
   }
-  
+
   /**
    * Handle saving a trophy in-sheet.
    * @param {Event} e  Triggering event.
    * @returns {Promise<Actor5e>|null}  Actor after update if any changes were made.
    * @private
    */
-   _onTrophyChange(e) {
+  _onTrophyChange(e) {
     e.preventDefault();
     const target = e.currentTarget;
     const row = target.closest(".trophy");
@@ -141,7 +168,7 @@ export class agonHeroSheet extends ActorSheet {
     trophy[key] = value;
 
     // Perform the Actor update
-    return this.actor.update({'data.trophies': trophies});
+    return this.actor.update({ "data.trophies": trophies });
   }
 
   /* -------------------------------------------- */

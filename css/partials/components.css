@@ -1,4 +1,8 @@
 .sheet {
+  & header.sheet-header img {
+    @apply flex-none
+  }
+
   & .logo {
     @apply h-auto border-none flex-none w-48;
   }
@@ -25,12 +29,18 @@
 }
 
 .cut-corners {
+  &:before,
+  &:after {
+    content: "";
+  }
+}
+
+.cut-corners {
   @apply relative;
 
   &:before,
   &:after {
     @apply absolute right-0 w-1 h-1 bg-white pointer-events-none;
-    content: "";
   }
 
   &:before {
@@ -42,12 +52,18 @@
 }
 
 .cut-corners--border {
+  &:before,
+  &:after {
+    content: "";
+  }
+}
+
+.cut-corners--border {
   position: relative;
 
   &:before,
   &:after {
     @apply absolute -right-0.5 w-1 h-1 border-black border-2 border-r-0 bg-white pointer-events-none;
-    content: "";
   }
 
   &:before {
