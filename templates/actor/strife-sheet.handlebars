@@ -15,6 +15,18 @@
               </div>
             {{/each}}
         {{/each}}
+        {{#each wrathLayout as | god godKey |}}
+            {{#each god as | wrath wrathKey |}}
+              <div class="checkbox-wrapper absolute block" style="top: {{wrath.top}}%; left: {{wrath.left}}%;">
+                <input 
+                  type="checkbox"
+                  name="data.vault.wrath.{{godKey}}.{{wrathKey}}"
+                  class="wrath-checkbox--isolated"
+                  {{checked wrath.checked}}
+                  />
+              </div>
+            {{/each}}
+        {{/each}}
       </div>
       
     </section>

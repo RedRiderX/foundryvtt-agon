@@ -332,6 +332,20 @@ input[type="radio"].static {
   }
 }
 
+.wrath-checkbox--isolated[type="checkbox"] {
+  @apply appearance-none relative m-0 block w-7 h-7;
+
+  &:before {
+    @apply absolute w-full h-full;
+    content: "";
+    background-image: url('../assets/wrath.svg');
+  }
+
+  &:checked:before {
+    background-image: url('../assets/wrath-checked.svg');
+  }
+}
+
 .styled-radio--isolated[type="radio"] {
   @apply appearance-none 
     relative top-0

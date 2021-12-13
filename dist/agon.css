@@ -1796,6 +1796,29 @@ input[type="radio"].static {
     border-color: white;
   }
 
+.wrath-checkbox--isolated[type="checkbox"]{
+  position: relative;
+  margin: 0px;
+  display: block;
+  height: 1.75rem;
+  width: 1.75rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.wrath-checkbox--isolated[type="checkbox"]:before{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+    content: "";
+    background-image: url('../assets/wrath.svg');
+}
+
+.wrath-checkbox--isolated[type="checkbox"]:checked:before {
+    background-image: url('../assets/wrath-checked.svg');
+  }
+
 .styled-radio--isolated[type="radio"]{
   position: relative;
   top: 0px;
