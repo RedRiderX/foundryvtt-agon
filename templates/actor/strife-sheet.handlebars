@@ -1,11 +1,11 @@
 <form class="{{cssClass}} flexcol uppercase" autocomplete="off">
-    <section class="vault-of-heaven sheet-section">
+    <section class="vault-of-heaven sheet-section block" style="width: 784px;">
       <h1 class="text-lg">The Vault of Heaven</h1>
       <div class="-ml-2 relative">
         {{> "systems/agon/assets/vault-of-heaven.svg.handlebars" }}
         {{#each starsLayout as | god godKey |}}
             {{#each god as | star starKey |}}
-              <div class="checkbox-wrapper absolute" style="top: {{star.top}}%; left: {{star.left}}%;">
+              <div class="checkbox-wrapper absolute block" style="top: {{star.top}}%; left: {{star.left}}%;">
                 <input 
                   type="checkbox"
                   name="data.vault.stars.{{godKey}}.{{starKey}}"
