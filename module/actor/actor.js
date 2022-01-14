@@ -82,7 +82,7 @@ export class agonActor extends Actor {
             roll: {
               icon: '<i class="fas fa-dice-d20"></i>',
               label: "Speak Your Name",
-              callback: this.prototype._createStrifeRoll.bind(this),
+              callback: this.prototype._createResponseRoll.bind(this),
             },
           },
           // render: html => console.log("Register interactivity in the rendered dialog"),
@@ -101,7 +101,7 @@ export class agonActor extends Actor {
         }
 
         heroRolls.forEach((message) => {
-          console.log(message, message.roll.formula);
+          console.log(message);
           // execute roll, save to array
         });
 
@@ -122,37 +122,37 @@ export class agonActor extends Actor {
     button.disabled = false;
   }
 
-  async _createStrifeRoll(html) {
-    const formData = new FormData(html[0].querySelector("form"));
-    console.log(formData);
-    let dicePool = [];
-    let epithet1 = formData.has("epithet1");
-    let epithet2 = formData.has("epithet2");
-    let domain = formData.get("domain").length ? formData.get("domain") : null;
-    let favor = formData.get("favor").length ? formData.get("favor") : null;
-    let bond = formData.get("bond").length ? formData.get("bond") : null;
-    let support = formData.get("support").length
-      ? formData.get("support")
-      : null;
-    let advantage = formData.get("advantage").length
-      ? formData.get("advantage")
-      : null;
+  async _createResponseRoll(html) {
+    // const formData = new FormData(html[0].querySelector("form"));
+    // console.log(formData);
+    // let dicePool = [];
+    // let epithet1 = formData.has("epithet1");
+    // let epithet2 = formData.has("epithet2");
+    // let domain = formData.get("domain").length ? formData.get("domain") : null;
+    // let favor = formData.get("favor").length ? formData.get("favor") : null;
+    // let bond = formData.get("bond").length ? formData.get("bond") : null;
+    // let support = formData.get("support").length
+    //   ? formData.get("support")
+    //   : null;
+    // let advantage = formData.get("advantage").length
+    //   ? formData.get("advantage")
+    //   : null;
 
     // let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {
     //   strife: formData.get("strifeLevel"),
     // });
     // roll.evaluate();
 
-    // ChatMessage.create({
-    //   content: await renderTemplate(
-    //     "systems/agon/templates/chat/spoken-name.handlebars",
-    //     {
-    //       // messageId: strifeRoll.id,
-    //     }
-    //   ),
-    //   flags: { "agon.relatedContest": messageId },
-    //   roll: JSON.stringify(Roll.create("1d4").toJSON()),
-    // });
+    ChatMessage.create({
+      content: await renderTemplate(
+        "systems/agon/templates/chat/spoken-name.handlebars",
+        // {
+        //   messageId: strifeRoll.id,
+        // }
+      ),
+      // flags: { "agon.relatedContest": messageId },
+      // roll: JSON.stringify(Roll.create("1d4").toJSON()),
+    });
   }
   
   get favorsList() {

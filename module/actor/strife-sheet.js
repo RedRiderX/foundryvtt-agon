@@ -163,9 +163,9 @@ export class agonStrifeSheet extends ActorSheet {
     }
 
     let roll = new Roll(`{${dicePool.join()}}kh + @strife`, {
-      strife: formData.get("strifeLevel"),
+      strife: Number(formData.get("strifeLevel")),
     });
-    roll.evaluate();
+    await roll.evaluate({async: true});
 
     let strifeRoll = await ChatMessage.create({
       content: await renderTemplate(

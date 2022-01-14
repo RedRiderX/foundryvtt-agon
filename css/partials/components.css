@@ -1,6 +1,6 @@
 .sheet {
   & header.sheet-header img {
-    @apply flex-none
+    @apply flex-none h-auto;
   }
 
   & .logo {

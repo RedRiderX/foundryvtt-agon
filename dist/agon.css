@@ -818,6 +818,7 @@ button > i, form button > i, .dialog .dialog-buttons button > i, .dialog .dialog
 }
 
 .sheet header.sheet-header img{
+  height: auto;
   -webkit-box-flex: 0;
       -ms-flex: none;
           flex: none;
