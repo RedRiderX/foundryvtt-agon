@@ -11,7 +11,7 @@ label:before, label:after, [type="checkbox"]:before, [type="checkbox"]:after{
   --tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.border-2, .border-0, .border-r-2, .border-l-0, .border-l-2, [id=sidebar-tabs], .active, [id=players], .window-header, button, .default, .primary-cta, .chat-cta--transparent, .sheet-section, .cut-corners:before, .cut-corners:after, .cut-corners--border:before, .cut-corners--border:after, .cut-corners--nested:before, .cut-corners--nested:after, .cut-corners--left:before, .cut-corners--left:after, [id=chat-log] > *, textarea, .chat-message, .strife-roll, .fortune-test, [id=chat-message], .roll-type-select, [type="text"], [type="number"], [type="password"], [type="date"], [type="time"], select, .domain:before, .domain:after, .radio-row > *, .radio-row, .radio-row:before, .radio-row:after, .radio-group, .radio-group:before, .radio-group:after, .divine:nth-child(2n):before, .divine:nth-child(3):before, .divine:nth-child(7):before, .divine:nth-child(11):before, .divine:nth-child(2n):after, .divine:nth-child(3):after, .divine:nth-child(7):after, .divine:nth-child(11):after, [type="checkbox"]:before, label:before, [type="radio"], .bond__name{
+.border-2, .border-0, .border-r-2, .border-l-0, .border-l-2, [id=sidebar-tabs], .active, [id=players], .window-header, button, .default, .primary-cta, .chat-cta--transparent, .sheet-section, .cut-corners:before, .cut-corners:after, .cut-corners--border:before, .cut-corners--border:after, .cut-corners--nested:before, .cut-corners--nested:after, .cut-corners--left:before, .cut-corners--left:after, [id=chat-log] > *, textarea, .chat-message, .strife-roll, .fortune-test, [id=chat-message], .roll-type-select, [type="text"], [type="number"], [type="password"], [type="date"], [type="time"], select, .domain:before, .domain:after, .radio-row > *, .radio-row, .radio-row:before, .radio-row:after, .radio-group, .radio-group:before, .radio-group:after, .divine:nth-child(2n):before, .divine:nth-child(3):before, .divine:nth-child(7):before, .divine:nth-child(11):before, .divine:nth-child(2n):after, .divine:nth-child(3):after, .divine:nth-child(7):after, .divine:nth-child(11):after, [type="checkbox"]:before, label:before, [type="radio"], .bond__name, .dice-tray__button, .dice-tray__math, .dice-tray__roll, .dice-tray__input{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
@@ -543,6 +543,9 @@ label:before, label:after, [type="checkbox"]:before, [type="checkbox"]:after{
 }
 
 :root {
+  --color-underline-header: #000;
+  --color-text-hyperlink: #007D84;
+
   scrollbar-width: thin;
   scrollbar-color: #374151 #f3f4f6;
 }
@@ -1485,6 +1488,10 @@ input.glory-value{
           box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
 }
 
+.journal-sheet form .editor {
+  height: calc(100% - 135px);
+}
+
 .pathos [type="radio"]{
   position: static;
   margin: 0px;
@@ -1877,7 +1884,71 @@ input[type="radio"].static {
   margin-left: 0.5rem;
 }
 
+.dice-tray .dice-tray__button{
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(172 195 200 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+                  
+        /* line-height: 1.75em; */
+        padding: 0;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        min-height: 0;
+}
+
+.dice-tray .dice-tray__button:hover,
+        .dice-tray .dice-tray__button:focus {
+            -webkit-box-shadow: none;
+                    box-shadow: none;
+        }
+
+.dice-tray .dice-tray__button svg {
+    
+            height: 2rem;
+            width: 2rem
+        }
+
+.dice-tray .dice-tray__button svg *{
+  fill: #000;
+}
+
+.dice-tray button.dice-tray__math, .dice-tray button.dice-tray__roll{
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(172 195 200 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+                  
+        /* line-height: 1.75em; */
+        padding: 0;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        min-height: 0;
+}
+
+.dice-tray input[type="text"].dice-tray__input{
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+                  
+        /* line-height: 1.75em; */
+        padding: 0;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        min-height: 0;
+}
+
 .last\:mb-0:last-child{
   margin-bottom: 0px;
 }
-  

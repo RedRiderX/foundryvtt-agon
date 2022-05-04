@@ -1,0 +1,49 @@
+.dice-tray {
+    
+    & .dice-tray__button {
+        @apply uppercase 
+            border-2 border-black bg-accent-300;
+                  
+        /* line-height: 1.75em; */
+        padding: 0;
+        box-shadow: none;
+        min-height: 0;
+    
+        &:hover,
+        &:focus {
+            box-shadow: none;
+        }
+    
+        & svg {
+    
+            height: 2rem;
+            width: 2rem;
+            
+            & * {
+                @apply fill-black;
+            }
+        }
+    }
+
+    & button.dice-tray__math,
+    & button.dice-tray__roll {
+        @apply uppercase 
+            border-2 border-black bg-accent-300 text-black;
+                  
+        /* line-height: 1.75em; */
+        padding: 0;
+        box-shadow: none;
+        min-height: 0;
+    }
+
+    & input[type="text"].dice-tray__input {
+        @apply uppercase 
+            border-2 border-black bg-white text-black;
+                  
+        /* line-height: 1.75em; */
+        padding: 0;
+        box-shadow: none;
+        min-height: 0;
+    }
+}
+

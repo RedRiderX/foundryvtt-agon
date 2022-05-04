@@ -139,6 +139,10 @@ input.glory-value {
   }
 }
 
+.journal-sheet form .editor {
+  height: calc(100% - 135px);
+}
+
 .pathos {
   & [type="radio"] {
     @apply block static m-0;

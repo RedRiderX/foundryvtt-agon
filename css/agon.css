@@ -6,4 +6,5 @@
 @import "partials/components.css";
 @import "partials/chat.css";
 @import "partials/forms.css";
-  
+
+@import "modules/dice-tray.css";

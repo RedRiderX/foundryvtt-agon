@@ -18,6 +18,9 @@
   @apply bg-gray-700 border-white border-solid rounded-none;
 }
 :root {
+  --color-underline-header: #000;
+  --color-text-hyperlink: theme("colors.accent.500");
+
   scrollbar-width: thin;
   scrollbar-color: theme("colors.gray.700") theme("colors.gray.100");
 }
