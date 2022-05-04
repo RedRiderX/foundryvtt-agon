@@ -4,6 +4,13 @@
 
 `npm run start` to build css with postcss and tailwind
 
+Todo
+---
+* add "Accept Sacrifice" path
+* add "Challenge Leadership" path
+* add "Answer the Call" path
+* add "Test Their Fortune" button for Strife player
+
 Notes
 ---
 Goal for roll process
@@ -18,6 +25,8 @@ Goal for roll process
 `game.messages.get(<id>)`
 
 `message.setFlag('agon', 'relatedContest', <id>)`
+
+
 
 Bugs
 ---

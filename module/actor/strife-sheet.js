@@ -184,15 +184,15 @@ export class agonStrifeSheet extends ActorSheet {
       ),
     });
 
-    ChatMessage.create({
-      content: await renderTemplate(
-        "systems/agon/templates/chat/fortune-test.handlebars",
-        {
-          messageId: strifeRoll.id,
-        }
-      ),
-      whisper: [game.userId],
-    });
+    // ChatMessage.create({
+    //   content: await renderTemplate(
+    //     "systems/agon/templates/chat/fortune-test.handlebars",
+    //     {
+    //       messageId: strifeRoll.id,
+    //     }
+    //   ),
+    //   whisper: [game.userId],
+    // });
   }
 
   // /**
