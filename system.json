@@ -1,12 +1,12 @@
 {
   "name": "agon",
   "title": "Agon",
-  "description": "The Agon system for FoundryVTT!",
+  "description": "The Agon RPG system for FoundryVTT",
   "version": "1.0.0",
   "minimumCoreVersion": "0.8.9",
-  "compatibleCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "9",
   "templateVersion": 2,
-  "author": "RedMcGreg",
+  "author": "Red",
   "scripts": [],
   "esmodules": ["module/agon.js"],
   "styles": ["dist/agon.css"],
@@ -18,9 +18,13 @@
       "path": "lang/en.json"
     }
   ],
+  "dependencies": [
+    {
+      "name": "dice-calculator"
+    }
+  ],
   "socket": false,
-  "url": "",
-  "manifest": "",
-  "download": "",
-  "license": "LICENSE.txt"
+  "url": "https://github.com/RedRiderX/foundryvtt-agon",
+  "manifest": "https://raw.githubusercontent.com/RedRiderX/foundryvtt-agon/master/system.json",
+  "download": "https://github.com/RedRiderX/foundryvtt-agon/releases/download/1.0.0/agon.zip",
 }
