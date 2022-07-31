@@ -1,7 +1,5 @@
 # Agon System for Foundry VTT
 
-> Note: Still pretty unfinished, sheets look nice but custom rolls don't fully work.
-
 `npm run start` to build css with postcss and tailwind
 
 Todo
@@ -27,8 +25,6 @@ Goal for roll process
 `message.setFlag('agon', 'relatedContest', <id>)`
 
 
-
 Bugs
 ---
-
 * boons don't trigger properly when multiple hero sheets open

@@ -11,7 +11,7 @@ label:before, label:after, [type="checkbox"]:before, [type="checkbox"]:after{
   --tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.border-2, .border-0, .border-r-2, .border-l-0, .border-l-2, [id=sidebar-tabs], .active, [id=players], .window-header, button, .default, .primary-cta, .chat-cta--transparent, .sheet-section, .cut-corners:before, .cut-corners:after, .cut-corners--border:before, .cut-corners--border:after, .cut-corners--nested:before, .cut-corners--nested:after, .cut-corners--left:before, .cut-corners--left:after, [id=chat-log] > *, textarea, .chat-message, .strife-roll, .fortune-test, [id=chat-message], .roll-type-select, [type="text"], [type="number"], [type="password"], [type="date"], [type="time"], select, .domain:before, .domain:after, .radio-row > *, .radio-row, .radio-row:before, .radio-row:after, .radio-group, .radio-group:before, .radio-group:after, .divine:nth-child(2n):before, .divine:nth-child(3):before, .divine:nth-child(7):before, .divine:nth-child(11):before, .divine:nth-child(2n):after, .divine:nth-child(3):after, .divine:nth-child(7):after, .divine:nth-child(11):after, [type="checkbox"]:before, label:before, [type="radio"], .bond__name, .dice-tray__button, .dice-tray__math, .dice-tray__roll, .dice-tray__input{
+.border-2, .border-0, .border-r-2, .border-l-0, .border-l-2, [id=sidebar-tabs], .active, [id=players], .window-header, button, .default, .primary-cta, .chat-cta--transparent, .sheet-section, .cut-corners:before, .cut-corners:after, .cut-corners--border:before, .cut-corners--border:after, .cut-corners--nested:before, .cut-corners--nested:after, .cut-corners--left:before, .cut-corners--left:after, [id=chat-log] > *, textarea, .chat-message, .strife-roll, .fortune-test, [id=chat-message], .roll-type-select, [type="text"], [type="number"], [type="password"], [type="date"], [type="time"], select, .domain:before, .domain:after, .radio-row > *, .radio-row, .radio-row:before, .radio-row:after, .radio-group, .radio-group:before, .radio-group:after, .divine:nth-child(2n):before, .divine:nth-child(3):before, .divine:nth-child(7):before, .divine:nth-child(11):before, .divine:nth-child(2n):after, .divine:nth-child(3):after, .divine:nth-child(7):after, .divine:nth-child(11):after, blockquote, [type="checkbox"]:before, label:before, [type="radio"], .bond__name, .dice-tray__button, .dice-tray__math, .dice-tray__roll, .dice-tray__input{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
@@ -1490,6 +1490,59 @@ input.glory-value{
 
 .journal-sheet form .editor {
   height: calc(100% - 135px);
+}
+
+.journal-sheet .editor-content{
+  padding: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.journal-sheet .editor-content h1{
+  margin-top: 2rem;
+  border-style: none;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 400;
+}
+
+.journal-sheet .editor-content h2{
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  border-style: none;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+}
+
+.journal-sheet .editor-content p{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.journal-sheet .editor-content ul{
+  padding-left: 1rem;
+    list-style-type: "\25C6";
+}
+
+.journal-sheet .editor-content li{
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.journal-sheet .editor-content blockquote{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .pathos [type="radio"]{
